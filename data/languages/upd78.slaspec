@@ -78,6 +78,7 @@ define token opbyte (8)
     rp3_0_1 = (0,1)
 
     srl_0_4  = (0,4)
+    srr_0_4  = (0,4)
     sr2l_0_2 = (0,2)
     sr2h_0_2 = (0,2)
     sr3_0    = (0,0)
@@ -132,10 +133,13 @@ attach variables [ r2_0_1 ] [ V A B C]; # r2
 
 attach variables [ rp_4_5 ] [ SP BC DE HL]; # rp
 
-attach variables [ srl_0_4 ] [ PORTA PORTB PORTC PORTD _ PORTF MKH MKL ANM SMH SML EOM ETMM TMM _ _ MM MCC MA MB MC _ _ MF TXB RXB TM0 TM1 _ _ _ _ ]; # SR low
+# sr: the special registers MOV sr,A can write (the low 5 bits of the S5..S0 code; ZCM is S5..S0 = 101000)
+attach variables [ srl_0_4 ] [ PORTA PORTB PORTC PORTD _ PORTF MKH MKL ANM SMH SML EOM ETMM TMM _ _ MM MCC MA MB MC _ _ MF TXB _ TM0 TM1 _ _ _ _ ]; # SR low
+# sr1: the special registers MOV A,sr1 can read (RXB is read-only, TXB write-only)
+attach variables [ srr_0_4 ] [ PORTA PORTB PORTC PORTD _ PORTF MKH MKL ANM SMH _ EOM _ TMM _ _ _ _ _ _ _ _ _ _ _ RXB _ _ _ _ _ _ ]; # SR1 low
 attach variables [ cr_0_1 ] [ CR0 CR1 CR2 CR3 ]; # cr registers
 attach variables [ sr2l_0_2 ] [ PORTA PORTB PORTC PORTD _ PORTF MKH MKL]; # sr2 low
-attach variables [ sr2h_0_2 ] [ ANM SMH SML EOM ETMM TMM _ _]; # sr2 high
+attach variables [ sr2h_0_2 ] [ ANM SMH _ EOM _ TMM _ _]; # sr2 high
 attach variables [ sr3_0 ] [ ETM0 ETM1]; # sr3
 attach variables [ sr4_0 ] [ ECNT ECPT]; # sr4
 
@@ -406,7 +410,7 @@ rpa3: (DE++) is rpa3_0_3 = 0x4 & DE                     { tmp:2 = DE; DE = DE + 
 rpa3: (HL++) is rpa3_0_3 = 0x5 & HL                     { tmp:2 = HL; HL = HL + 2; export *:2 tmp; }
 rpa3: (HL+A) is rpa3_0_3 = 0xc & HL & A                 { ptr:2 = HL + zext(A); export *:2 ptr; }
 rpa3: (HL+B) is rpa3_0_3 = 0xd & HL & B                 { ptr:2 = HL + zext(B); export *:2 ptr; }
-rpa3: (HL+EA) is rpa3_0_3 = 0xf & HL & EA               { ptr:2 = HL + EA; export *:2 ptr; }
+rpa3: (HL+EA) is rpa3_0_3 = 0xe & HL & EA               { ptr:2 = HL + EA; export *:2 ptr; }
 
 # Flags
 flag: "CY" is f_0_2 = 0x2 { f:1 = $(CY_flag); export f; }
@@ -431,6 +435,7 @@ irf: AN4    is irf_0_4 = 0x10 & AN4 { export AN4; }
 irf: AN5    is irf_0_4 = 0x11 & AN5 { export AN5; }
 irf: AN6    is irf_0_4 = 0x12 & AN6 { export AN6; }
 irf: AN7    is irf_0_4 = 0x13 & AN7 { export AN7; }
+irf: SB     is irf_0_4 = 0x14 & SB  { export SB; }
 
 ################################################################
 # 14.6.1 8-bit data transfer instructions                      #
@@ -455,15 +460,17 @@ irf: AN7    is irf_0_4 = 0x13 & AN7 { export AN7; }
     srl_0_4 = A;
 }
 
-:MOV cr_0_1, A is op0_7 = 0x4D & A; op6_7 = 0x3 & cr_0_1 & bit_5=1 {
-    cr_0_1 = A;
+# S5..S0 = 101000. ZCM (zero-cross mode) is the one special register outside the 5-bit table.
+:MOV ZCM, A is op0_7 = 0x4D & A; op0_7 = 0xE8 & ZCM {
+    ZCM = A;
 }
 
-:MOV A, srl_0_4 is op0_7 = 0x4C; op6_7 = 0x3 & srl_0_4 & bit_5=0 & A {
-    A = srl_0_4;
+:MOV A, srr_0_4 is op0_7 = 0x4C; op6_7 = 0x3 & srr_0_4 & bit_5=0 & A {
+    A = srr_0_4;
 }
 
-:MOV A, cr_0_1 is op0_7 = 0x4C; op6_7 = 0x3 & cr_0_1 & bit_5=1 & A {
+# CR0..CR3 (A/D conversion results, read-only): S5..S0 = 1000nn
+:MOV A, cr_0_1 is op0_7 = 0x4C; op2_7 = 0x38 & cr_0_1 & A {
     A = cr_0_1;
 }
 
@@ -811,7 +818,7 @@ irf: AN7    is irf_0_4 = 0x13 & AN7 { export AN7; }
     subNoBorrow(A, rpa);
 }
 
-:ANAX rpa is op0_7 = 0x70; op3_7 = 0x10 & rpa_0_2 != 0 & rpa {
+:ANAX rpa is op0_7 = 0x70; op3_7 = 0x11 & rpa_0_2 != 0 & rpa {
     and(A, rpa);
 }
 
@@ -1087,6 +1094,10 @@ irf: AN7    is irf_0_4 = 0x13 & AN7 { export AN7; }
     offTest(sr2l_0_2, imm8);
 }
 
+:OFFI sr2h_0_2, imm8 is op0_7 = 0x64; op3_7 = 0x1b & sr2h_0_2; imm8 [ possibleSkip = 1; globalset(inst_next,possibleSkip); ] {
+    offTest(sr2h_0_2, imm8);
+}
+
 ################################################################
 # 14.6.6 Working register operation instructions               #
 ################################################################
@@ -1107,7 +1118,7 @@ irf: AN7    is irf_0_4 = 0x13 & AN7 { export AN7; }
     sub(A, waMem8);
 }
 
-:SSBW waMem8 is op0_7 = 0x74; op0_7 = 0xf0; waMem8 {
+:SBBW waMem8 is op0_7 = 0x74; op0_7 = 0xf0; waMem8 {
     subWithBorrow(A, waMem8);
 }
 
@@ -1215,7 +1226,7 @@ irf: AN7    is irf_0_4 = 0x13 & AN7 { export AN7; }
     sub16(EA, rp3_);
 }
 
-:DSSB EA, rp3_ is rp3_ & ... op2_7 = 0x3d & EA {
+:DSBB EA, rp3_ is rp3_ & ... op2_7 = 0x3d & EA {
     sub16WithBorrow(EA, rp3_);
 }
 
