@@ -1,0 +1,1189 @@
+# Hand-computed p-code cases for the uPD78C1x module. See cases.py for the format.
+# Flags in PSW: Z=40h SK=20h HC=10h L1=08h L0=04h CY=01h.  Registers not set start at 0.
+
+# ---------------- arithmetic and flags ----------------
+case adi_plain
+	adi a,5
+set A 0x10
+expect A 0x15
+expect PSW 0x00
+done
+case adi_carry
+	adi a,20h
+set A 0xf0
+expect A 0x10
+expect PSW 0x01
+done
+case adi_half_carry
+	adi a,1
+set A 0x0f
+expect A 0x10
+expect PSW 0x10
+done
+case adi_zero
+	adi a,1
+set A 0xff
+expect A 0x00
+expect PSW 0x51
+done
+case aci_carry_in
+	aci a,0
+set A 0x7f
+set PSW 0x01
+expect A 0x80
+expect PSW 0x10
+done
+case aci_overflow
+	aci a,0ffh
+set A 0xff
+set PSW 0x01
+expect A 0xff
+expect PSW 0x11
+done
+case sui_borrow
+	sui a,20h
+set A 0x10
+expect A 0xf0
+expect PSW 0x01
+done
+case sui_half_borrow
+	sui a,1
+set A 0x10
+expect A 0x0f
+expect PSW 0x10
+done
+case sui_zero
+	sui a,33h
+set A 0x33
+expect A 0x00
+expect PSW 0x40
+done
+case sbi_borrow_in
+	sbi a,5
+set A 0x05
+set PSW 0x01
+expect A 0xff
+expect PSW 0x11
+done
+case sbb_reg_a
+	sbb b,a
+set B 0x10
+set A 0x01
+set PSW 0x01
+expect B 0x0e
+expect PSW 0x10
+done
+case add_a_reg_wrap
+	add a,e
+set A 0x80
+set E 0x80
+expect A 0x00
+expect PSW 0x41
+done
+case add_adc_16bit
+	mov a,e
+	add l,a
+	mov a,d
+	adc h,a
+set DE 0x0101
+set HL 0x12ff
+expect HL 0x1400
+expect PSW 0x00
+done
+case ana_keeps_cy_hc
+	ana a,e
+set A 0xf0
+set E 0x3c
+set PSW 0x11
+expect A 0x30
+expect PSW 0x11
+done
+case ora_zero
+	ora a,e
+set PSW 0x01
+expect A 0x00
+expect PSW 0x41
+done
+case xra_self
+	xra a,a
+set A 0x5a
+set PSW 0x10
+expect A 0x00
+expect PSW 0x50
+done
+case ani_imm
+	ani a,0fh
+set A 0xaa
+expect A 0x0a
+expect PSW 0x00
+done
+case ori_register
+	ori c,0f0h
+set C 0x0f
+set A 0x01
+expect C 0xff
+expect A 0x01
+done
+case xri_register
+	xri d,0fh
+set D 0xff
+expect D 0xf0
+done
+case sub_reg_a_borrow
+	sub e,a
+set E 0x05
+set A 0x07
+expect E 0xfe
+expect PSW 0x11
+done
+case dadd_wrap
+	dadd ea,b
+set EA 0xffff
+set BC 0x0001
+expect EA 0x0000
+expect PSW 0x51
+done
+case dadc_carry_in
+	dadc ea,d
+set EA 0x00ff
+set DE 0x0100
+set PSW 0x01
+expect EA 0x0200
+expect PSW 0x10
+done
+case dsub_half_borrow
+	dsub ea,h
+set EA 0x0100
+set HL 0x0001
+expect EA 0x00ff
+expect PSW 0x10
+done
+case dsbb_borrow_in
+	dsbb ea,b
+set EA 0x1000
+set BC 0x1000
+set PSW 0x01
+expect EA 0xffff
+expect PSW 0x11
+done
+case dan_dor_dxr
+	dan ea,b
+	dor ea,d
+	dxr ea,h
+set EA 0xf0f0
+set BC 0x0ff0
+set DE 0x0f00
+set HL 0x00ff
+expect EA 0x0f0f
+done
+case eadd_esub
+	eadd ea,a
+	esub ea,b
+set EA 0x00ff
+set A 0x01
+set B 0x01
+expect EA 0x00ff
+expect PSW 0x10
+done
+case mul_a_b
+	mul b
+set A 0x12
+set B 0x10
+expect EA 0x0120
+expect PSW 0x00
+done
+case div_ea_c
+	div c
+set EA 0x0123
+set C 0x10
+expect EA 0x0012
+expect C 0x03
+done
+case inx_dcx_keep_flags
+	inx h
+	dcx sp
+	inx ea
+	dcx ea
+	inx b
+set HL 0xffff
+set EA 0x0000
+set BC 0x00ff
+set PSW 0x51
+expect HL 0x0000
+expect SP 0x7fff
+expect EA 0x0000
+expect BC 0x0100
+expect PSW 0x51
+done
+case nega_cases
+	nega
+set A 0x01
+expect A 0xff
+done
+case nega_80
+	nega
+set A 0x80
+expect A 0x80
+done
+case daa_manual_example
+	adi a,79h
+	daa
+set A 0x88
+expect A 0x67
+expect PSW 0x01
+done
+case daa_low_digit
+	adi a,8
+	daa
+set A 0x09
+expect A 0x17
+expect PSW 0x00
+done
+case daa_wrap
+	adi a,1
+	daa
+set A 0x99
+expect A 0x00
+expect PSW 0x51
+done
+case stc_clc
+	stc
+	nop
+	clc
+	stc
+set PSW 0x50
+expect PSW 0x51
+done
+case rld_manual_example
+	rld
+set A 0x01
+set HL 0x2000
+set ram:2000 0x53
+expect A 0x05
+expect ram:2000 0x31
+done
+case rrd_manual_example
+	rrd
+set A 0x01
+set HL 0x2000
+set ram:2000 0x53
+expect A 0x03
+expect ram:2000 0x15
+done
+case sll_keeps_z
+	sll a
+set A 0x81
+set PSW 0x40
+expect A 0x02
+expect PSW 0x41
+done
+case slr_cy
+	slr b
+set B 0x03
+expect B 0x01
+expect PSW 0x01
+done
+case rll_through_carry
+	rll a
+set A 0x81
+set PSW 0x01
+expect A 0x03
+expect PSW 0x01
+done
+case rlr_through_carry
+	rlr c
+set C 0x02
+set PSW 0x01
+expect C 0x81
+expect PSW 0x00
+done
+case drll_drlr
+	drll ea
+	drlr ea
+	drlr ea
+set EA 0x8001
+set PSW 0x00
+expect EA 0x4000
+expect PSW 0x01
+done
+case dsll_dslr
+	dsll ea
+	dslr ea
+	dslr ea
+set EA 0x8003
+expect EA 0x0001
+expect PSW 0x01
+done
+
+# ---------------- skips ----------------
+case addnc_skips
+	addnc a,e
+	mvi b,1
+	mvi c,2
+set A 0x10
+set E 0x20
+expect A 0x30
+expect B 0x00
+expect C 0x02
+done
+case addnc_no_skip
+	addnc a,e
+	mvi b,1
+	mvi c,2
+set A 0xf0
+set E 0x20
+expect A 0x10
+expect B 0x01
+expect C 0x02
+done
+case subnb_skips
+	subnb a,e
+	mvi b,1
+	mvi c,2
+set A 0x05
+set E 0x03
+expect A 0x02
+expect B 0x00
+expect C 0x02
+done
+case subnb_no_skip
+	subnb a,e
+	mvi b,1
+	mvi c,2
+set A 0x03
+set E 0x05
+expect A 0xfe
+expect B 0x01
+done
+case gta_skips
+	gta a,e
+	mvi b,1
+	mvi c,2
+set A 0x05
+set E 0x04
+expect B 0x00
+expect C 0x02
+expect PSW 0x40
+done
+case gta_equal_no_skip
+	gta a,e
+	mvi b,1
+	mvi c,2
+set A 0x05
+set E 0x05
+expect B 0x01
+expect PSW 0x11
+done
+case gta_zero_vs_ff
+	gta a,e
+	mvi b,1
+set A 0x00
+set E 0xff
+expect B 0x01
+expect PSW 0x51
+done
+case gta_sets_sk
+	gta a,e
+set A 0x05
+set E 0x04
+expect PSW 0x60
+done
+case lta_skips
+	lta a,e
+	mvi b,1
+	mvi c,2
+set A 0x03
+set E 0x04
+expect B 0x00
+expect C 0x02
+expect PSW 0x11
+done
+case lta_equal_no_skip
+	lta a,e
+	mvi b,1
+set A 0x04
+set E 0x04
+expect B 0x01
+expect PSW 0x40
+done
+case nea_equal_no_skip
+	nea a,e
+	mvi b,1
+set A 0x07
+set E 0x07
+expect B 0x01
+expect PSW 0x40
+done
+case nea_differ_skips
+	nea a,e
+	mvi b,1
+	mvi c,2
+set A 0x07
+set E 0x08
+expect B 0x00
+expect C 0x02
+expect PSW 0x11
+done
+case eqa_equal_skips
+	eqa a,e
+	mvi b,1
+	mvi c,2
+set A 0x07
+set E 0x07
+expect B 0x00
+expect C 0x02
+done
+case ona_skips
+	ona a,e
+	mvi b,1
+	mvi c,2
+set A 0x18
+set E 0x08
+expect B 0x00
+expect C 0x02
+expect PSW 0x00
+done
+case ona_no_skip
+	ona a,e
+	mvi b,1
+set A 0x0f
+set E 0xf0
+expect B 0x01
+expect PSW 0x40
+done
+case offa_skips
+	offa a,e
+	mvi b,1
+	mvi c,2
+set A 0x0f
+set E 0xf0
+set PSW 0x01
+expect B 0x00
+expect C 0x02
+expect PSW 0x41
+done
+case inr_carry_skips
+	inr b
+	mvi c,1
+	mvi d,2
+set B 0xff
+set PSW 0x01
+expect B 0x00
+expect C 0x00
+expect D 0x02
+expect PSW 0x51
+done
+case inr_no_skip
+	inr b
+	mvi c,1
+	mvi d,2
+set B 0x0f
+expect B 0x10
+expect C 0x01
+expect PSW 0x10
+done
+case dcr_borrow_skips
+	dcr b
+	mvi c,1
+	mvi d,2
+set B 0x00
+expect B 0xff
+expect C 0x00
+expect D 0x02
+expect PSW 0x10
+done
+case dcr_no_skip
+	dcr b
+	mvi c,1
+	mvi d,2
+set B 0x01
+expect B 0x00
+expect C 0x01
+expect PSW 0x40
+done
+case inrw_skips
+	inrw 5
+	mvi c,1
+	mvi d,2
+set V 0x20
+set ram:2005 0xff
+expect ram:2005 0x00
+expect C 0x00
+expect D 0x02
+done
+case dcrw_skips
+	dcrw 5
+	mvi c,1
+	mvi d,2
+set V 0x20
+set ram:2005 0x00
+expect ram:2005 0xff
+expect C 0x00
+expect D 0x02
+done
+case sllc_skips
+	sllc a
+	mvi b,1
+	mvi c,2
+set A 0x81
+expect A 0x02
+expect B 0x00
+expect C 0x02
+expect PSW 0x01
+done
+case slrc_no_skip
+	slrc a
+	mvi b,1
+	mvi c,2
+set A 0x02
+expect A 0x01
+expect B 0x01
+expect PSW 0x00
+done
+case bit_set_skips
+	bit 3,10h
+	mvi b,1
+	mvi c,2
+set V 0x20
+set ram:2010 0x08
+expect B 0x00
+expect C 0x02
+done
+case bit_clear_no_skip
+	bit 3,10h
+	mvi b,1
+	mvi c,2
+set V 0x20
+set ram:2010 0xf7
+expect B 0x01
+done
+case sk_cy_skips
+	sk cy
+	mvi b,1
+	mvi c,2
+set PSW 0x01
+expect B 0x00
+expect C 0x02
+done
+case skn_cy_skips
+	skn cy
+	mvi b,1
+	mvi c,2
+set PSW 0x00
+expect B 0x00
+expect C 0x02
+done
+case sk_z_no_skip
+	sk z
+	mvi b,1
+set PSW 0x00
+expect B 0x01
+done
+case skit_resets_flag
+	skit ft0
+	mvi b,1
+	mvi c,2
+set FT0 1
+expect FT0 0
+expect B 0x00
+expect C 0x02
+done
+case sknit_flag_clear_skips
+	sknit f1
+	mvi b,1
+	mvi c,2
+set F1 0
+expect B 0x00
+expect C 0x02
+done
+case sknit_flag_set_resets
+	sknit fe0
+	mvi b,1
+set FE0 1
+expect FE0 0
+expect B 0x01
+done
+case skit_nmi_not_reset
+	skit nmi
+	mvi b,1
+	mvi c,2
+set NMI 1
+expect NMI 1
+expect B 0x00
+done
+case skit_sb
+	skit sb
+	mvi b,1
+	mvi c,2
+set SB 1
+expect SB 0
+expect B 0x00
+done
+case gti_skips
+	gti a,4
+	mvi b,1
+	mvi c,2
+set A 5
+expect B 0
+expect C 2
+done
+case lti_reg_skips
+	lti e,10h
+	mvi b,1
+	mvi c,2
+set E 0x0f
+expect B 0
+expect C 2
+done
+case eqi_skips
+	eqi a,7
+	mvi b,1
+	mvi c,2
+set A 7
+expect B 0
+done
+case nei_no_skip
+	nei a,7
+	mvi b,1
+set A 7
+expect B 1
+done
+case oni_offi
+	oni a,80h
+	mvi b,1
+	offi a,80h
+	mvi c,2
+	mvi d,3
+set A 0x80
+expect B 0
+expect C 2
+expect D 3
+done
+case eqiw_gtiw
+	eqiw 4,55h
+	mvi b,1
+	gtiw 4,50h
+	mvi c,2
+	mvi d,3
+set V 0x30
+set ram:3004 0x55
+expect B 0
+expect C 0
+expect D 3
+done
+case dgt_skips
+	dgt ea,d
+	mvi b,1
+	mvi c,2
+set EA 0x0200
+set DE 0x01ff
+expect B 0
+expect C 2
+expect PSW 0x50
+done
+case dgt_sets_sk
+	dgt ea,d
+set EA 0x0200
+set DE 0x01ff
+expect PSW 0x70
+done
+case dlt_skips
+	dlt ea,b
+	mvi b,1
+set EA 0x0003
+set BC 0x0004
+expect PSW 0x11
+done
+case deq_skips
+	deq ea,h
+set EA 0x1234
+set HL 0x1234
+expect PSW 0x60
+done
+case dne_no_skip
+	dne ea,h
+	mvi b,1
+set EA 0x1234
+set HL 0x1234
+expect B 1
+expect PSW 0x40
+done
+case don_doff
+	don ea,b
+	mvi d,1
+	doff ea,b
+	mvi e,2
+	mvi h,3
+set EA 0x1000
+set BC 0x0fff
+expect D 1
+expect E 0
+expect H 3
+done
+case daddnc_skips
+	daddnc ea,b
+	mvi d,1
+	mvi e,2
+set EA 0x0001
+set BC 0x0001
+expect EA 0x0002
+expect D 0
+expect E 2
+done
+case dsubnb_skips
+	dsubnb ea,b
+	mvi d,1
+	mvi e,2
+set EA 0x0005
+set BC 0x0003
+expect EA 0x0002
+expect D 0
+expect E 2
+done
+case sk_chain_second_is_skipped
+	sk cy
+	gta a,e
+	mvi b,1
+	mvi c,2
+set PSW 0x01
+set A 5
+set E 4
+expect B 1
+expect C 2
+done
+
+# ---------------- stacking flags L1 / L0 ----------------
+case mvi_a_stacked
+	mvi a,1
+	mvi a,2
+expect A 1
+expect PSW 0x08
+done
+case mvi_a_after_other
+	mvi a,1
+	mvi b,5
+	mvi a,2
+expect A 2
+expect B 5
+expect PSW 0x08
+done
+case mvi_l_stacked
+	mvi l,10h
+	mvi l,20h
+expect L 0x10
+expect PSW 0x04
+done
+case lxi_h_after_mvi_l
+	mvi l,33h
+	lxi h,4444h
+expect HL 0x0033
+expect PSW 0x04
+done
+case lxi_h_twice
+	lxi h,1111h
+	lxi h,2222h
+expect HL 0x1111
+done
+case mvi_a_then_l
+	mvi a,1
+	mvi l,2
+expect A 1
+expect L 2
+expect PSW 0x04
+done
+case mvi_a_then_alu_clears
+	mvi a,1
+	adi a,0
+	mvi a,3
+expect A 3
+done
+case stacked_entry_points
+	jmp start
+entry:	mvi l,0
+second:	mvi l,4
+	ret
+start:	call entry
+	mov a,l
+	mov e,a
+	call second
+	mov a,l
+	mov d,a
+done_:
+	nop
+set L 0xff
+set E 0x77
+set D 0x77
+end done_
+expect E 0x00
+expect D 0x04
+done
+
+# ---------------- moves and memory ----------------
+case mov_registers
+	mov e,a
+	mov a,b
+	mov eah,a
+	mov a,eal
+set A 0x5a
+set B 0x11
+set EA 0x0034
+expect E 0x5a
+expect EAH 0x11
+expect A 0x34
+done
+case ldaw_staw
+	staw 10h
+	xra a,a
+	ldaw 10h
+set V 0x30
+set A 0x42
+expect ram:3010 0x42
+expect A 0x42
+done
+case ldax_postinc
+	ldax h+
+	stax d-
+set HL 0x2000
+set DE 0x2100
+set ram:2000 0x11
+expect A 0x11
+expect HL 0x2001
+expect DE 0x20ff
+expect ram:2100 0x11
+done
+case ldax_indexed_b
+	ldax h+b
+set HL 0x2000
+set B 3
+set ram:2003 0x77
+expect A 0x77
+done
+case ldax_indexed_a
+	ldax h+a
+set HL 0x2000
+set A 2
+set ram:2002 0x66
+expect A 0x66
+done
+case ldax_indexed_ea
+	ldax h+ea
+set HL 0x2000
+set EA 0x0104
+set ram:2104 0x55
+expect A 0x55
+done
+case ldax_disp_de
+	ldax d+5
+set DE 0x2100
+set ram:2105 0x99
+expect A 0x99
+done
+case stax_disp_hl
+	stax h+5
+set HL 0x3000
+set A 0xaa
+expect ram:3005 0xaa
+done
+case stax_predec_hl
+	stax h-
+	stax h-
+set HL 0x3001
+set A 0x12
+expect ram:3001 0x12
+expect ram:3000 0x12
+expect HL 0x2fff
+done
+case mov_absolute
+	mov b,2000h
+	mov 2001h,c
+set ram:2000 0x5c
+set C 0x6d
+expect B 0x5c
+expect ram:2001 0x6d
+done
+case mviw_mvix
+	mviw 10h,55h
+	mvix h,66h
+set V 0x20
+set HL 0x3000
+expect ram:2010 0x55
+expect ram:3000 0x66
+done
+case push_pop
+	lxi sp,9000h
+	lxi b,1234h
+	push b
+	pop d
+expect DE 0x1234
+expect SP 0x9000
+expect ram:8fff 0x12
+expect ram:8ffe 0x34
+done
+case push_va_ea
+	push v
+	push ea
+	pop h
+set A 0x22
+set V 0x11
+set EA 0x3344
+expect ram:7ffe 0x22
+expect ram:7fff 0x11
+expect HL 0x3344
+expect SP 0x7ffe
+done
+case exx_exa_exh
+	exx
+	exa
+	exh
+set BC 0x1111
+set DE 0x2222
+set HL 0x3333
+set VA 0x4444
+set EA 0x5555
+set BC_ 0xaaaa
+set DE_ 0xbbbb
+set HL_ 0xcccc
+set VA_ 0xdddd
+set EA_ 0xeeee
+expect BC 0xaaaa
+expect DE 0xbbbb
+expect HL 0x3333
+expect HL_ 0xcccc
+expect BC_ 0x1111
+expect VA 0xdddd
+expect VA_ 0x4444
+expect EA 0xeeee
+expect EA_ 0x5555
+done
+case block_copy
+	block
+set C 2
+set HL 0x2000
+set DE 0x3000
+set ram:2000 0x11
+set ram:2001 0x22
+set ram:2002 0x33
+expect ram:3000 0x11
+expect ram:3001 0x22
+expect ram:3002 0x33
+expect C 0xff
+expect HL 0x2003
+expect DE 0x3003
+done
+case dmov_pairs
+	dmov b,ea
+	dmov ea,h
+set EA 0xbeef
+set HL 0x1234
+expect BC 0xbeef
+expect EA 0x1234
+done
+case store_load_pairs
+	lxi sp,9abch
+	sspd 2000h
+	shld 2010h
+	sbcd 2020h
+	sded 2030h
+	lded 2010h
+	lbcd 2030h
+	lhld 2000h
+	lspd 2010h
+set HL 0x1234
+set BC 0x5678
+set DE 0x9abc
+expect ram:2000 0xbc
+expect ram:2001 0x9a
+expect ram:2010 0x34
+expect ram:2011 0x12
+expect ram:2020 0x78
+expect ram:2021 0x56
+expect ram:2030 0xbc
+expect ram:2031 0x9a
+expect DE 0x1234
+expect BC 0x9abc
+expect HL 0x9abc
+expect SP 0x1234
+done
+case ldeax_steax
+	steax h++
+	ldeax d+2
+	steax d
+set EA 0xabcd
+set HL 0x2000
+set DE 0x2100
+set ram:2102 0x34
+set ram:2103 0x12
+expect ram:2000 0xcd
+expect ram:2001 0xab
+expect HL 0x2002
+expect EA 0x1234
+expect ram:2100 0x34
+expect ram:2101 0x12
+done
+case special_registers
+	mov pa,a
+	mov a,pb
+	mvi pc,5
+	adi pc,3
+	mov zcm,a
+	mov a,cr1
+set A 0x77
+set PORTB 0x12
+set CR1 0x9a
+expect PORTA 0x77
+expect PORTC 0x08
+expect ZCM 0x12
+expect A 0x9a
+done
+case timer_pairs
+	dmov etm0,ea
+	dmov ea,ecnt
+set EA 0x1234
+set ECNT 0x5678
+expect ETM0 0x1234
+expect EA 0x5678
+done
+case table_lookup
+	table
+endofcode2:
+	jb
+	db 11h,22h,33h
+	db 44h
+set A 2
+end endofcode2
+expect C 0x33
+expect B 0x44
+done
+
+# ---------------- flow ----------------
+case jmp_jr_jre
+	jmp l1
+	mvi b,1
+l1:	jr l2
+	mvi c,1
+l2:	jre l3
+	mvi d,1
+l3:	mvi e,9
+set E 0
+expect B 0
+expect C 0
+expect D 0
+expect E 9
+done
+case jre_backward
+	jmp go
+back:	mvi h,5
+	jmp fin
+go:	jre back
+fin:	nop
+expect H 5
+done
+case loop_dcr_jr
+	mvi b,0
+loop:	dcr c
+	jr loop
+set C 2
+expect C 0xff
+done
+case call_ret
+	lxi sp,9000h
+	call sub
+	mvi d,5
+	jmp fin
+sub:	mvi e,7
+	ret
+fin:	nop
+expect E 7
+expect D 5
+expect SP 0x9000
+done
+case rets_skips_after_call
+	lxi sp,9000h
+	call sub
+	mvi d,5
+	mvi h,9
+	jmp fin
+sub:	mvi e,7
+	rets
+fin:	nop
+expect E 7
+expect D 0
+expect H 9
+done
+case call_stack_contents
+	lxi sp,9000h
+	call sub
+	jmp fin
+sub:	mov a,l
+fin:	nop
+end fin
+expect SP 0x8ffe
+expect ram:8ffe 0x06
+expect ram:8fff 0x10
+done
+case jb_jea_calb
+	lxi sp,9000h
+	lxi b,tgt
+	calb
+	jea
+tgt:	mvi d,3
+	lxi b,tgt2
+	jb
+	mvi e,1
+tgt2:	nop
+expect D 3
+expect E 0
+done
+case calt_calf
+	lxi sp,9000h
+	calt 82h
+	calf 0900h
+	jmp fin
+	org 0900h
+fn:	mvi h,6
+	ret
+	org 0100h
+ct:	mvi d,4
+	ret
+fin:	nop
+set ram:0082/2 0x0100
+expect D 4
+expect H 6
+done
+case softi_reti
+	lxi sp,9000h
+	softi
+	mvi h,7
+	jmp fin
+	org 0060h
+	mvi b,3
+	reti
+fin:	nop
+set PSW 0x41
+expect B 3
+expect H 7
+expect SP 0x9000
+expect PSW 0x41
+expect ram:8fff 0x41
+done
+case skip_not_applied_to_softi
+	lxi sp,9000h
+	sk cy
+	softi
+	mvi h,7
+	jmp fin
+	org 0060h
+	mvi b,3
+	reti
+fin:	nop
+set PSW 0x01
+expect B 3
+done
+case jea_via_ea
+	jea
+	mvi b,1
+tgt:	mvi c,2
+set EA @tgt
+expect B 0
+expect C 2
+done

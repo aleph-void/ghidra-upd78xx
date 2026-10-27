@@ -1,0 +1,2726 @@
+case sum16_1
+	lxi	h,2000h
+	mvi	c,15
+	xra	a,a
+loop:	addx	h+
+	dcr	c
+	jr	loop
+	mov	2100h,a
+fin:
+set ram:2000 0x1b
+set ram:2001 0x66
+set ram:2002 0xb8
+set ram:2003 0x91
+set ram:2004 0x8c
+set ram:2005 0xb9
+set ram:2006 0xb6
+set ram:2007 0x27
+set ram:2008 0x77
+set ram:2009 0x94
+set ram:200a 0xfb
+set ram:200b 0xa9
+set ram:200c 0x48
+set ram:200d 0xed
+set ram:200e 0x5e
+set ram:200f 0xde
+expect ram:2100 0xc
+end fin
+done
+case sum16_2
+	lxi	h,2000h
+	mvi	c,15
+	xra	a,a
+loop:	addx	h+
+	dcr	c
+	jr	loop
+	mov	2100h,a
+fin:
+set ram:2000 0x7e
+set ram:2001 0x85
+set ram:2002 0x6d
+set ram:2003 0xee
+set ram:2004 0x94
+set ram:2005 0xba
+set ram:2006 0xd3
+set ram:2007 0xc4
+set ram:2008 0x63
+set ram:2009 0xca
+set ram:200a 0x72
+set ram:200b 0x8c
+set ram:200c 0xf9
+set ram:200d 0xa7
+set ram:200e 0x8c
+set ram:200f 0x46
+expect ram:2100 0xe0
+end fin
+done
+case sum16_3
+	lxi	h,2000h
+	mvi	c,15
+	xra	a,a
+loop:	addx	h+
+	dcr	c
+	jr	loop
+	mov	2100h,a
+fin:
+set ram:2000 0x88
+set ram:2001 0x2e
+set ram:2002 0x78
+set ram:2003 0x84
+set ram:2004 0x74
+set ram:2005 0x73
+set ram:2006 0xbe
+set ram:2007 0x2b
+set ram:2008 0x88
+set ram:2009 0xe
+set ram:200a 0x15
+set ram:200b 0x98
+set ram:200c 0xa3
+set ram:200d 0x1e
+set ram:200e 0x68
+set ram:200f 0x5
+expect ram:2100 0xf3
+end fin
+done
+case sum16_4
+	lxi	h,2000h
+	mvi	c,15
+	xra	a,a
+loop:	addx	h+
+	dcr	c
+	jr	loop
+	mov	2100h,a
+fin:
+set ram:2000 0x4e
+set ram:2001 0xc5
+set ram:2002 0x8d
+set ram:2003 0x64
+set ram:2004 0x9c
+set ram:2005 0x33
+set ram:2006 0xe
+set ram:2007 0x70
+set ram:2008 0x3
+set ram:2009 0xce
+set ram:200a 0x0
+set ram:200b 0x6d
+set ram:200c 0xf5
+set ram:200d 0xe8
+set ram:200e 0xde
+set ram:200f 0x87
+expect ram:2100 0xd1
+end fin
+done
+case sum16_5
+	lxi	h,2000h
+	mvi	c,15
+	xra	a,a
+loop:	addx	h+
+	dcr	c
+	jr	loop
+	mov	2100h,a
+fin:
+set ram:2000 0x98
+set ram:2001 0x6
+set ram:2002 0x9
+set ram:2003 0xab
+set ram:2004 0x1
+set ram:2005 0xb4
+set ram:2006 0x2a
+set ram:2007 0x48
+set ram:2008 0x5
+set ram:2009 0xd4
+set ram:200a 0x54
+set ram:200b 0xf4
+set ram:200c 0xd6
+set ram:200d 0xb7
+set ram:200e 0xc3
+set ram:200f 0x75
+expect ram:2100 0x5f
+end fin
+done
+case sum16_6
+	lxi	h,2000h
+	mvi	c,15
+	xra	a,a
+loop:	addx	h+
+	dcr	c
+	jr	loop
+	mov	2100h,a
+fin:
+set ram:2000 0x2c
+set ram:2001 0xe
+set ram:2002 0xc1
+set ram:2003 0x7b
+set ram:2004 0x7d
+set ram:2005 0xe8
+set ram:2006 0x2c
+set ram:2007 0xd5
+set ram:2008 0x62
+set ram:2009 0x59
+set ram:200a 0x95
+set ram:200b 0xfe
+set ram:200c 0x9d
+set ram:200d 0x53
+set ram:200e 0x3c
+set ram:200f 0x9
+expect ram:2100 0x5f
+end fin
+done
+case sum16_7
+	lxi	h,2000h
+	mvi	c,15
+	xra	a,a
+loop:	addx	h+
+	dcr	c
+	jr	loop
+	mov	2100h,a
+fin:
+set ram:2000 0x88
+set ram:2001 0x50
+set ram:2002 0xa4
+set ram:2003 0x5
+set ram:2004 0x47
+set ram:2005 0x7
+set ram:2006 0xca
+set ram:2007 0xa3
+set ram:2008 0xe6
+set ram:2009 0xa9
+set ram:200a 0x6b
+set ram:200b 0xa8
+set ram:200c 0x3d
+set ram:200d 0xac
+set ram:200e 0xa4
+set ram:200f 0x1d
+expect ram:2100 0x88
+end fin
+done
+case sum16_8
+	lxi	h,2000h
+	mvi	c,15
+	xra	a,a
+loop:	addx	h+
+	dcr	c
+	jr	loop
+	mov	2100h,a
+fin:
+set ram:2000 0x14
+set ram:2001 0x57
+set ram:2002 0xce
+set ram:2003 0x60
+set ram:2004 0xce
+set ram:2005 0x27
+set ram:2006 0xa0
+set ram:2007 0x70
+set ram:2008 0x0
+set ram:2009 0xbb
+set ram:200a 0xc4
+set ram:200b 0xe1
+set ram:200c 0xb2
+set ram:200d 0x8b
+set ram:200e 0x4f
+set ram:200f 0x1
+expect ram:2100 0x8b
+end fin
+done
+case bubble8_9
+	mvi	b,7
+outer:	lxi	h,2000h
+	mvi	c,6
+inner:	ldax	h+
+	mov	e,a
+	ldax	h
+	lta	a,e
+	jr	noswap
+	mov	d,a
+	mov	a,e
+	stax	h-
+	mov	a,d
+	stax	h+
+noswap:	dcr	c
+	jr	inner
+	dcr	b
+	jre	outer
+fin:
+set ram:2000 0x7c
+set ram:2001 0x0
+set ram:2002 0x5
+set ram:2003 0xb
+set ram:2004 0x0
+set ram:2005 0x0
+set ram:2006 0x0
+set ram:2007 0x3
+expect ram:2000 0x0
+expect ram:2001 0x0
+expect ram:2002 0x0
+expect ram:2003 0x0
+expect ram:2004 0x3
+expect ram:2005 0x5
+expect ram:2006 0xb
+expect ram:2007 0x7c
+end fin
+done
+case bubble8_10
+	mvi	b,7
+outer:	lxi	h,2000h
+	mvi	c,6
+inner:	ldax	h+
+	mov	e,a
+	ldax	h
+	lta	a,e
+	jr	noswap
+	mov	d,a
+	mov	a,e
+	stax	h-
+	mov	a,d
+	stax	h+
+noswap:	dcr	c
+	jr	inner
+	dcr	b
+	jre	outer
+fin:
+set ram:2000 0x1
+set ram:2001 0x24
+set ram:2002 0x0
+set ram:2003 0x0
+set ram:2004 0x0
+set ram:2005 0xd5
+set ram:2006 0x7
+set ram:2007 0x0
+expect ram:2000 0x0
+expect ram:2001 0x0
+expect ram:2002 0x0
+expect ram:2003 0x0
+expect ram:2004 0x1
+expect ram:2005 0x7
+expect ram:2006 0x24
+expect ram:2007 0xd5
+end fin
+done
+case bubble8_11
+	mvi	b,7
+outer:	lxi	h,2000h
+	mvi	c,6
+inner:	ldax	h+
+	mov	e,a
+	ldax	h
+	lta	a,e
+	jr	noswap
+	mov	d,a
+	mov	a,e
+	stax	h-
+	mov	a,d
+	stax	h+
+noswap:	dcr	c
+	jr	inner
+	dcr	b
+	jre	outer
+fin:
+set ram:2000 0x0
+set ram:2001 0xff
+set ram:2002 0xd5
+set ram:2003 0xf
+set ram:2004 0xff
+set ram:2005 0x0
+set ram:2006 0x0
+set ram:2007 0xd
+expect ram:2000 0x0
+expect ram:2001 0x0
+expect ram:2002 0x0
+expect ram:2003 0xd
+expect ram:2004 0xf
+expect ram:2005 0xd5
+expect ram:2006 0xff
+expect ram:2007 0xff
+end fin
+done
+case bubble8_12
+	mvi	b,7
+outer:	lxi	h,2000h
+	mvi	c,6
+inner:	ldax	h+
+	mov	e,a
+	ldax	h
+	lta	a,e
+	jr	noswap
+	mov	d,a
+	mov	a,e
+	stax	h-
+	mov	a,d
+	stax	h+
+noswap:	dcr	c
+	jr	inner
+	dcr	b
+	jre	outer
+fin:
+set ram:2000 0xff
+set ram:2001 0x6
+set ram:2002 0xb
+set ram:2003 0xff
+set ram:2004 0x6
+set ram:2005 0x9c
+set ram:2006 0xff
+set ram:2007 0xff
+expect ram:2000 0x6
+expect ram:2001 0x6
+expect ram:2002 0xb
+expect ram:2003 0x9c
+expect ram:2004 0xff
+expect ram:2005 0xff
+expect ram:2006 0xff
+expect ram:2007 0xff
+end fin
+done
+case bubble8_13
+	mvi	b,7
+outer:	lxi	h,2000h
+	mvi	c,6
+inner:	ldax	h+
+	mov	e,a
+	ldax	h
+	lta	a,e
+	jr	noswap
+	mov	d,a
+	mov	a,e
+	stax	h-
+	mov	a,d
+	stax	h+
+noswap:	dcr	c
+	jr	inner
+	dcr	b
+	jre	outer
+fin:
+set ram:2000 0xff
+set ram:2001 0xa5
+set ram:2002 0x0
+set ram:2003 0x39
+set ram:2004 0xff
+set ram:2005 0xff
+set ram:2006 0xc
+set ram:2007 0xe3
+expect ram:2000 0x0
+expect ram:2001 0xc
+expect ram:2002 0x39
+expect ram:2003 0xa5
+expect ram:2004 0xe3
+expect ram:2005 0xff
+expect ram:2006 0xff
+expect ram:2007 0xff
+end fin
+done
+case bubble8_14
+	mvi	b,7
+outer:	lxi	h,2000h
+	mvi	c,6
+inner:	ldax	h+
+	mov	e,a
+	ldax	h
+	lta	a,e
+	jr	noswap
+	mov	d,a
+	mov	a,e
+	stax	h-
+	mov	a,d
+	stax	h+
+noswap:	dcr	c
+	jr	inner
+	dcr	b
+	jre	outer
+fin:
+set ram:2000 0x0
+set ram:2001 0x4
+set ram:2002 0x0
+set ram:2003 0x5d
+set ram:2004 0xba
+set ram:2005 0x0
+set ram:2006 0x0
+set ram:2007 0x0
+expect ram:2000 0x0
+expect ram:2001 0x0
+expect ram:2002 0x0
+expect ram:2003 0x0
+expect ram:2004 0x0
+expect ram:2005 0x4
+expect ram:2006 0x5d
+expect ram:2007 0xba
+end fin
+done
+case bubble8_15
+	mvi	b,7
+outer:	lxi	h,2000h
+	mvi	c,6
+inner:	ldax	h+
+	mov	e,a
+	ldax	h
+	lta	a,e
+	jr	noswap
+	mov	d,a
+	mov	a,e
+	stax	h-
+	mov	a,d
+	stax	h+
+noswap:	dcr	c
+	jr	inner
+	dcr	b
+	jre	outer
+fin:
+set ram:2000 0x0
+set ram:2001 0x1
+set ram:2002 0x27
+set ram:2003 0xff
+set ram:2004 0x0
+set ram:2005 0x0
+set ram:2006 0xff
+set ram:2007 0x8
+expect ram:2000 0x0
+expect ram:2001 0x0
+expect ram:2002 0x0
+expect ram:2003 0x1
+expect ram:2004 0x8
+expect ram:2005 0x27
+expect ram:2006 0xff
+expect ram:2007 0xff
+end fin
+done
+case bubble8_16
+	mvi	b,7
+outer:	lxi	h,2000h
+	mvi	c,6
+inner:	ldax	h+
+	mov	e,a
+	ldax	h
+	lta	a,e
+	jr	noswap
+	mov	d,a
+	mov	a,e
+	stax	h-
+	mov	a,d
+	stax	h+
+noswap:	dcr	c
+	jr	inner
+	dcr	b
+	jre	outer
+fin:
+set ram:2000 0x2a
+set ram:2001 0x0
+set ram:2002 0x0
+set ram:2003 0x0
+set ram:2004 0x0
+set ram:2005 0x54
+set ram:2006 0xff
+set ram:2007 0x38
+expect ram:2000 0x0
+expect ram:2001 0x0
+expect ram:2002 0x0
+expect ram:2003 0x0
+expect ram:2004 0x2a
+expect ram:2005 0x38
+expect ram:2006 0x54
+expect ram:2007 0xff
+end fin
+done
+case bubble8_17
+	mvi	b,7
+outer:	lxi	h,2000h
+	mvi	c,6
+inner:	ldax	h+
+	mov	e,a
+	ldax	h
+	lta	a,e
+	jr	noswap
+	mov	d,a
+	mov	a,e
+	stax	h-
+	mov	a,d
+	stax	h+
+noswap:	dcr	c
+	jr	inner
+	dcr	b
+	jre	outer
+fin:
+set ram:2000 0x5
+set ram:2001 0x0
+set ram:2002 0x7
+set ram:2003 0x0
+set ram:2004 0x0
+set ram:2005 0x7
+set ram:2006 0xff
+set ram:2007 0x3
+expect ram:2000 0x0
+expect ram:2001 0x0
+expect ram:2002 0x0
+expect ram:2003 0x3
+expect ram:2004 0x5
+expect ram:2005 0x7
+expect ram:2006 0x7
+expect ram:2007 0xff
+end fin
+done
+case bubble8_18
+	mvi	b,7
+outer:	lxi	h,2000h
+	mvi	c,6
+inner:	ldax	h+
+	mov	e,a
+	ldax	h
+	lta	a,e
+	jr	noswap
+	mov	d,a
+	mov	a,e
+	stax	h-
+	mov	a,d
+	stax	h+
+noswap:	dcr	c
+	jr	inner
+	dcr	b
+	jre	outer
+fin:
+set ram:2000 0x2a
+set ram:2001 0xff
+set ram:2002 0xb
+set ram:2003 0xff
+set ram:2004 0xff
+set ram:2005 0x8
+set ram:2006 0xff
+set ram:2007 0x0
+expect ram:2000 0x0
+expect ram:2001 0x8
+expect ram:2002 0xb
+expect ram:2003 0x2a
+expect ram:2004 0xff
+expect ram:2005 0xff
+expect ram:2006 0xff
+expect ram:2007 0xff
+end fin
+done
+case mult_19
+	mov	b,2000h
+	lxi	d,0
+	mov	e,2001h
+	lxi	h,0
+	dmov	ea,h
+	mov	a,b
+	nei	a,0
+	jr	store
+	sui	a,1
+	mov	b,a
+loop:	dadd	ea,d
+	dcr	b
+	jr	loop
+store:	lxi	h,2002h
+	steax	h
+fin:
+set ram:2000 0x2c
+set ram:2001 0x0
+expect ram:2002/2 0x0
+end fin
+done
+case mult_20
+	mov	b,2000h
+	lxi	d,0
+	mov	e,2001h
+	lxi	h,0
+	dmov	ea,h
+	mov	a,b
+	nei	a,0
+	jr	store
+	sui	a,1
+	mov	b,a
+loop:	dadd	ea,d
+	dcr	b
+	jr	loop
+store:	lxi	h,2002h
+	steax	h
+fin:
+set ram:2000 0xd9
+set ram:2001 0xff
+expect ram:2002/2 0xd827
+end fin
+done
+case mult_21
+	mov	b,2000h
+	lxi	d,0
+	mov	e,2001h
+	lxi	h,0
+	dmov	ea,h
+	mov	a,b
+	nei	a,0
+	jr	store
+	sui	a,1
+	mov	b,a
+loop:	dadd	ea,d
+	dcr	b
+	jr	loop
+store:	lxi	h,2002h
+	steax	h
+fin:
+set ram:2000 0x1
+set ram:2001 0xff
+expect ram:2002/2 0xff
+end fin
+done
+case mult_22
+	mov	b,2000h
+	lxi	d,0
+	mov	e,2001h
+	lxi	h,0
+	dmov	ea,h
+	mov	a,b
+	nei	a,0
+	jr	store
+	sui	a,1
+	mov	b,a
+loop:	dadd	ea,d
+	dcr	b
+	jr	loop
+store:	lxi	h,2002h
+	steax	h
+fin:
+set ram:2000 0x1
+set ram:2001 0x33
+expect ram:2002/2 0x33
+end fin
+done
+case mult_23
+	mov	b,2000h
+	lxi	d,0
+	mov	e,2001h
+	lxi	h,0
+	dmov	ea,h
+	mov	a,b
+	nei	a,0
+	jr	store
+	sui	a,1
+	mov	b,a
+loop:	dadd	ea,d
+	dcr	b
+	jr	loop
+store:	lxi	h,2002h
+	steax	h
+fin:
+set ram:2000 0x1
+set ram:2001 0x1
+expect ram:2002/2 0x1
+end fin
+done
+case mult_24
+	mov	b,2000h
+	lxi	d,0
+	mov	e,2001h
+	lxi	h,0
+	dmov	ea,h
+	mov	a,b
+	nei	a,0
+	jr	store
+	sui	a,1
+	mov	b,a
+loop:	dadd	ea,d
+	dcr	b
+	jr	loop
+store:	lxi	h,2002h
+	steax	h
+fin:
+set ram:2000 0x1
+set ram:2001 0x1
+expect ram:2002/2 0x1
+end fin
+done
+case mult_25
+	mov	b,2000h
+	lxi	d,0
+	mov	e,2001h
+	lxi	h,0
+	dmov	ea,h
+	mov	a,b
+	nei	a,0
+	jr	store
+	sui	a,1
+	mov	b,a
+loop:	dadd	ea,d
+	dcr	b
+	jr	loop
+store:	lxi	h,2002h
+	steax	h
+fin:
+set ram:2000 0xff
+set ram:2001 0x0
+expect ram:2002/2 0x0
+end fin
+done
+case mult_26
+	mov	b,2000h
+	lxi	d,0
+	mov	e,2001h
+	lxi	h,0
+	dmov	ea,h
+	mov	a,b
+	nei	a,0
+	jr	store
+	sui	a,1
+	mov	b,a
+loop:	dadd	ea,d
+	dcr	b
+	jr	loop
+store:	lxi	h,2002h
+	steax	h
+fin:
+set ram:2000 0x0
+set ram:2001 0xff
+expect ram:2002/2 0x0
+end fin
+done
+case mult_27
+	mov	b,2000h
+	lxi	d,0
+	mov	e,2001h
+	lxi	h,0
+	dmov	ea,h
+	mov	a,b
+	nei	a,0
+	jr	store
+	sui	a,1
+	mov	b,a
+loop:	dadd	ea,d
+	dcr	b
+	jr	loop
+store:	lxi	h,2002h
+	steax	h
+fin:
+set ram:2000 0xad
+set ram:2001 0x1
+expect ram:2002/2 0xad
+end fin
+done
+case mult_28
+	mov	b,2000h
+	lxi	d,0
+	mov	e,2001h
+	lxi	h,0
+	dmov	ea,h
+	mov	a,b
+	nei	a,0
+	jr	store
+	sui	a,1
+	mov	b,a
+loop:	dadd	ea,d
+	dcr	b
+	jr	loop
+store:	lxi	h,2002h
+	steax	h
+fin:
+set ram:2000 0xc9
+set ram:2001 0x0
+expect ram:2002/2 0x0
+end fin
+done
+case bcd8_29
+	lxi	h,2000h
+	lxi	d,2010h
+	lxi	b,2020h
+	mvi	v,30h
+	mviw	0,3
+	clc
+loop:	ldax	h+
+	adcx	d+
+	daa
+	stax	b
+	inx	b
+	dcrw	0
+	jr	loop
+	xra	a,a
+	adc	a,a
+	mov	2024h,a
+fin:
+set ram:2000 0x99
+set ram:2001 0x99
+set ram:2002 0x99
+set ram:2003 0x99
+set ram:2010 0x1
+set ram:2011 0x0
+set ram:2012 0x0
+set ram:2013 0x0
+expect ram:2020 0x0
+expect ram:2021 0x0
+expect ram:2022 0x0
+expect ram:2023 0x0
+expect ram:2024 0x1
+end fin
+done
+case bcd8_30
+	lxi	h,2000h
+	lxi	d,2010h
+	lxi	b,2020h
+	mvi	v,30h
+	mviw	0,3
+	clc
+loop:	ldax	h+
+	adcx	d+
+	daa
+	stax	b
+	inx	b
+	dcrw	0
+	jr	loop
+	xra	a,a
+	adc	a,a
+	mov	2024h,a
+fin:
+set ram:2000 0x0
+set ram:2001 0x0
+set ram:2002 0x0
+set ram:2003 0x0
+set ram:2010 0x0
+set ram:2011 0x0
+set ram:2012 0x0
+set ram:2013 0x0
+expect ram:2020 0x0
+expect ram:2021 0x0
+expect ram:2022 0x0
+expect ram:2023 0x0
+expect ram:2024 0x0
+end fin
+done
+case bcd8_31
+	lxi	h,2000h
+	lxi	d,2010h
+	lxi	b,2020h
+	mvi	v,30h
+	mviw	0,3
+	clc
+loop:	ldax	h+
+	adcx	d+
+	daa
+	stax	b
+	inx	b
+	dcrw	0
+	jr	loop
+	xra	a,a
+	adc	a,a
+	mov	2024h,a
+fin:
+set ram:2000 0x9
+set ram:2001 0x62
+set ram:2002 0x63
+set ram:2003 0x18
+set ram:2010 0x75
+set ram:2011 0x21
+set ram:2012 0x31
+set ram:2013 0x64
+expect ram:2020 0x84
+expect ram:2021 0x83
+expect ram:2022 0x94
+expect ram:2023 0x82
+expect ram:2024 0x0
+end fin
+done
+case bcd8_32
+	lxi	h,2000h
+	lxi	d,2010h
+	lxi	b,2020h
+	mvi	v,30h
+	mviw	0,3
+	clc
+loop:	ldax	h+
+	adcx	d+
+	daa
+	stax	b
+	inx	b
+	dcrw	0
+	jr	loop
+	xra	a,a
+	adc	a,a
+	mov	2024h,a
+fin:
+set ram:2000 0x33
+set ram:2001 0x65
+set ram:2002 0x25
+set ram:2003 0x30
+set ram:2010 0x28
+set ram:2011 0x64
+set ram:2012 0x23
+set ram:2013 0x60
+expect ram:2020 0x61
+expect ram:2021 0x29
+expect ram:2022 0x49
+expect ram:2023 0x90
+expect ram:2024 0x0
+end fin
+done
+case bcd8_33
+	lxi	h,2000h
+	lxi	d,2010h
+	lxi	b,2020h
+	mvi	v,30h
+	mviw	0,3
+	clc
+loop:	ldax	h+
+	adcx	d+
+	daa
+	stax	b
+	inx	b
+	dcrw	0
+	jr	loop
+	xra	a,a
+	adc	a,a
+	mov	2024h,a
+fin:
+set ram:2000 0x62
+set ram:2001 0x53
+set ram:2002 0x72
+set ram:2003 0x70
+set ram:2010 0x36
+set ram:2011 0x55
+set ram:2012 0x37
+set ram:2013 0x74
+expect ram:2020 0x98
+expect ram:2021 0x8
+expect ram:2022 0x10
+expect ram:2023 0x45
+expect ram:2024 0x1
+end fin
+done
+case bcd8_34
+	lxi	h,2000h
+	lxi	d,2010h
+	lxi	b,2020h
+	mvi	v,30h
+	mviw	0,3
+	clc
+loop:	ldax	h+
+	adcx	d+
+	daa
+	stax	b
+	inx	b
+	dcrw	0
+	jr	loop
+	xra	a,a
+	adc	a,a
+	mov	2024h,a
+fin:
+set ram:2000 0x29
+set ram:2001 0x69
+set ram:2002 0x90
+set ram:2003 0x68
+set ram:2010 0x77
+set ram:2011 0x58
+set ram:2012 0x38
+set ram:2013 0x33
+expect ram:2020 0x6
+expect ram:2021 0x28
+expect ram:2022 0x29
+expect ram:2023 0x2
+expect ram:2024 0x1
+end fin
+done
+case bcd8_35
+	lxi	h,2000h
+	lxi	d,2010h
+	lxi	b,2020h
+	mvi	v,30h
+	mviw	0,3
+	clc
+loop:	ldax	h+
+	adcx	d+
+	daa
+	stax	b
+	inx	b
+	dcrw	0
+	jr	loop
+	xra	a,a
+	adc	a,a
+	mov	2024h,a
+fin:
+set ram:2000 0x5
+set ram:2001 0x85
+set ram:2002 0x35
+set ram:2003 0x77
+set ram:2010 0x81
+set ram:2011 0x45
+set ram:2012 0x52
+set ram:2013 0x22
+expect ram:2020 0x86
+expect ram:2021 0x30
+expect ram:2022 0x88
+expect ram:2023 0x99
+expect ram:2024 0x0
+end fin
+done
+case bcd8_36
+	lxi	h,2000h
+	lxi	d,2010h
+	lxi	b,2020h
+	mvi	v,30h
+	mviw	0,3
+	clc
+loop:	ldax	h+
+	adcx	d+
+	daa
+	stax	b
+	inx	b
+	dcrw	0
+	jr	loop
+	xra	a,a
+	adc	a,a
+	mov	2024h,a
+fin:
+set ram:2000 0x44
+set ram:2001 0x93
+set ram:2002 0x45
+set ram:2003 0x64
+set ram:2010 0x61
+set ram:2011 0x17
+set ram:2012 0x47
+set ram:2013 0x30
+expect ram:2020 0x5
+expect ram:2021 0x11
+expect ram:2022 0x93
+expect ram:2023 0x94
+expect ram:2024 0x0
+end fin
+done
+case bcd8_37
+	lxi	h,2000h
+	lxi	d,2010h
+	lxi	b,2020h
+	mvi	v,30h
+	mviw	0,3
+	clc
+loop:	ldax	h+
+	adcx	d+
+	daa
+	stax	b
+	inx	b
+	dcrw	0
+	jr	loop
+	xra	a,a
+	adc	a,a
+	mov	2024h,a
+fin:
+set ram:2000 0x92
+set ram:2001 0x37
+set ram:2002 0x92
+set ram:2003 0x12
+set ram:2010 0x49
+set ram:2011 0x32
+set ram:2012 0x7
+set ram:2013 0x45
+expect ram:2020 0x41
+expect ram:2021 0x70
+expect ram:2022 0x99
+expect ram:2023 0x57
+expect ram:2024 0x0
+end fin
+done
+case bcd8_38
+	lxi	h,2000h
+	lxi	d,2010h
+	lxi	b,2020h
+	mvi	v,30h
+	mviw	0,3
+	clc
+loop:	ldax	h+
+	adcx	d+
+	daa
+	stax	b
+	inx	b
+	dcrw	0
+	jr	loop
+	xra	a,a
+	adc	a,a
+	mov	2024h,a
+fin:
+set ram:2000 0x48
+set ram:2001 0x77
+set ram:2002 0x10
+set ram:2003 0x11
+set ram:2010 0x62
+set ram:2011 0x38
+set ram:2012 0x59
+set ram:2013 0x94
+expect ram:2020 0x10
+expect ram:2021 0x16
+expect ram:2022 0x70
+expect ram:2023 0x5
+expect ram:2024 0x1
+end fin
+done
+case bcd8_39
+	lxi	h,2000h
+	lxi	d,2010h
+	lxi	b,2020h
+	mvi	v,30h
+	mviw	0,3
+	clc
+loop:	ldax	h+
+	adcx	d+
+	daa
+	stax	b
+	inx	b
+	dcrw	0
+	jr	loop
+	xra	a,a
+	adc	a,a
+	mov	2024h,a
+fin:
+set ram:2000 0x61
+set ram:2001 0x33
+set ram:2002 0x17
+set ram:2003 0x92
+set ram:2010 0x18
+set ram:2011 0x48
+set ram:2012 0x97
+set ram:2013 0x40
+expect ram:2020 0x79
+expect ram:2021 0x81
+expect ram:2022 0x14
+expect ram:2023 0x33
+expect ram:2024 0x1
+end fin
+done
+case bcd8_40
+	lxi	h,2000h
+	lxi	d,2010h
+	lxi	b,2020h
+	mvi	v,30h
+	mviw	0,3
+	clc
+loop:	ldax	h+
+	adcx	d+
+	daa
+	stax	b
+	inx	b
+	dcrw	0
+	jr	loop
+	xra	a,a
+	adc	a,a
+	mov	2024h,a
+fin:
+set ram:2000 0x12
+set ram:2001 0x35
+set ram:2002 0x60
+set ram:2003 0x93
+set ram:2010 0x53
+set ram:2011 0x54
+set ram:2012 0x52
+set ram:2013 0x21
+expect ram:2020 0x65
+expect ram:2021 0x89
+expect ram:2022 0x12
+expect ram:2023 0x15
+expect ram:2024 0x1
+end fin
+done
+case strcmp_41
+	lxi	h,2000h
+	lxi	d,2040h
+	mvi	c,0
+cmp:	ldax	h+
+	neax	d+
+	jr	same
+	jre	fin
+same:	eqi	a,0
+	jr	cont
+	jre	fin
+cont:	inr	c
+	jr	cmp
+fin:
+set ram:2000 0x28
+set ram:2001 0x95
+set ram:2002 0x2b
+set ram:2003 0x20
+set ram:2004 0xce
+set ram:2005 0x7c
+set ram:2006 0xd
+set ram:2007 0x96
+set ram:2008 0xd1
+set ram:2009 0x30
+set ram:200a 0x0
+set ram:2040 0x28
+set ram:2041 0x95
+set ram:2042 0x2b
+set ram:2043 0x20
+set ram:2044 0xce
+set ram:2045 0x7c
+set ram:2046 0x77
+set ram:2047 0x96
+set ram:2048 0xd1
+set ram:2049 0x30
+set ram:204a 0x0
+expect C 0x6
+end fin
+done
+case strcmp_42
+	lxi	h,2000h
+	lxi	d,2040h
+	mvi	c,0
+cmp:	ldax	h+
+	neax	d+
+	jr	same
+	jre	fin
+same:	eqi	a,0
+	jr	cont
+	jre	fin
+cont:	inr	c
+	jr	cmp
+fin:
+set ram:2000 0x54
+set ram:2001 0xec
+set ram:2002 0x5
+set ram:2003 0x63
+set ram:2004 0xcf
+set ram:2005 0xdc
+set ram:2006 0xec
+set ram:2007 0xe3
+set ram:2008 0x14
+set ram:2009 0xdd
+set ram:200a 0x1d
+set ram:200b 0x3e
+set ram:200c 0xa8
+set ram:200d 0xfe
+set ram:200e 0x28
+set ram:200f 0xfa
+set ram:2010 0x2a
+set ram:2011 0x58
+set ram:2012 0xde
+set ram:2013 0x88
+set ram:2014 0x8
+set ram:2015 0x43
+set ram:2016 0xac
+set ram:2017 0x67
+set ram:2018 0xb6
+set ram:2019 0xe4
+set ram:201a 0x0
+set ram:2040 0x54
+set ram:2041 0xec
+set ram:2042 0x5
+set ram:2043 0x63
+set ram:2044 0xcf
+set ram:2045 0xdc
+set ram:2046 0xec
+set ram:2047 0xe3
+set ram:2048 0x14
+set ram:2049 0xdd
+set ram:204a 0x1d
+set ram:204b 0x3e
+set ram:204c 0xa8
+set ram:204d 0xfe
+set ram:204e 0x28
+set ram:204f 0xfa
+set ram:2050 0x2a
+set ram:2051 0x58
+set ram:2052 0xde
+set ram:2053 0x88
+set ram:2054 0x8
+set ram:2055 0x43
+set ram:2056 0xac
+set ram:2057 0x67
+set ram:2058 0xb6
+set ram:2059 0xe4
+set ram:205a 0x0
+expect C 0x1a
+end fin
+done
+case strcmp_43
+	lxi	h,2000h
+	lxi	d,2040h
+	mvi	c,0
+cmp:	ldax	h+
+	neax	d+
+	jr	same
+	jre	fin
+same:	eqi	a,0
+	jr	cont
+	jre	fin
+cont:	inr	c
+	jr	cmp
+fin:
+set ram:2000 0xa1
+set ram:2001 0xa3
+set ram:2002 0x37
+set ram:2003 0xad
+set ram:2004 0x1c
+set ram:2005 0xac
+set ram:2006 0x0
+set ram:2040 0xa1
+set ram:2041 0xa3
+set ram:2042 0x37
+set ram:2043 0xad
+set ram:2044 0x1c
+set ram:2045 0xac
+set ram:2046 0x0
+expect C 0x6
+end fin
+done
+case strcmp_44
+	lxi	h,2000h
+	lxi	d,2040h
+	mvi	c,0
+cmp:	ldax	h+
+	neax	d+
+	jr	same
+	jre	fin
+same:	eqi	a,0
+	jr	cont
+	jre	fin
+cont:	inr	c
+	jr	cmp
+fin:
+set ram:2000 0x70
+set ram:2001 0xa5
+set ram:2002 0x12
+set ram:2003 0x20
+set ram:2004 0x9e
+set ram:2005 0x4b
+set ram:2006 0xe9
+set ram:2007 0xd7
+set ram:2008 0xa1
+set ram:2009 0xd2
+set ram:200a 0x71
+set ram:200b 0x0
+set ram:2040 0xa1
+set ram:2041 0xa5
+set ram:2042 0x12
+set ram:2043 0x20
+set ram:2044 0x9e
+set ram:2045 0x4b
+set ram:2046 0xe9
+set ram:2047 0xd7
+set ram:2048 0xa1
+set ram:2049 0xd2
+set ram:204a 0x71
+set ram:204b 0x0
+expect C 0x0
+end fin
+done
+case strcmp_45
+	lxi	h,2000h
+	lxi	d,2040h
+	mvi	c,0
+cmp:	ldax	h+
+	neax	d+
+	jr	same
+	jre	fin
+same:	eqi	a,0
+	jr	cont
+	jre	fin
+cont:	inr	c
+	jr	cmp
+fin:
+set ram:2000 0xaf
+set ram:2001 0xda
+set ram:2002 0x8f
+set ram:2003 0xf1
+set ram:2004 0xe5
+set ram:2005 0xf1
+set ram:2006 0xef
+set ram:2007 0x8e
+set ram:2008 0x5a
+set ram:2009 0xcc
+set ram:200a 0x4c
+set ram:200b 0x59
+set ram:200c 0x32
+set ram:200d 0x65
+set ram:200e 0xea
+set ram:200f 0x2d
+set ram:2010 0x22
+set ram:2011 0x31
+set ram:2012 0x0
+set ram:2040 0xaf
+set ram:2041 0xda
+set ram:2042 0x8f
+set ram:2043 0xf1
+set ram:2044 0xe5
+set ram:2045 0xf1
+set ram:2046 0xef
+set ram:2047 0x8e
+set ram:2048 0x5a
+set ram:2049 0xcc
+set ram:204a 0x4c
+set ram:204b 0x59
+set ram:204c 0x32
+set ram:204d 0x65
+set ram:204e 0xea
+set ram:204f 0x2d
+set ram:2050 0x22
+set ram:2051 0x31
+set ram:2052 0x0
+expect C 0x12
+end fin
+done
+case strcmp_46
+	lxi	h,2000h
+	lxi	d,2040h
+	mvi	c,0
+cmp:	ldax	h+
+	neax	d+
+	jr	same
+	jre	fin
+same:	eqi	a,0
+	jr	cont
+	jre	fin
+cont:	inr	c
+	jr	cmp
+fin:
+set ram:2000 0x66
+set ram:2001 0x9e
+set ram:2002 0x0
+set ram:2040 0x5f
+set ram:2041 0x9e
+set ram:2042 0x0
+expect C 0x0
+end fin
+done
+case strcmp_47
+	lxi	h,2000h
+	lxi	d,2040h
+	mvi	c,0
+cmp:	ldax	h+
+	neax	d+
+	jr	same
+	jre	fin
+same:	eqi	a,0
+	jr	cont
+	jre	fin
+cont:	inr	c
+	jr	cmp
+fin:
+set ram:2000 0x2d
+set ram:2001 0x4
+set ram:2002 0x30
+set ram:2003 0x70
+set ram:2004 0xe9
+set ram:2005 0xea
+set ram:2006 0x80
+set ram:2007 0xc2
+set ram:2008 0xf8
+set ram:2009 0x0
+set ram:2040 0x2d
+set ram:2041 0x4
+set ram:2042 0x30
+set ram:2043 0x70
+set ram:2044 0xe9
+set ram:2045 0xea
+set ram:2046 0x80
+set ram:2047 0xc2
+set ram:2048 0x87
+set ram:2049 0x0
+expect C 0x8
+end fin
+done
+case strcmp_48
+	lxi	h,2000h
+	lxi	d,2040h
+	mvi	c,0
+cmp:	ldax	h+
+	neax	d+
+	jr	same
+	jre	fin
+same:	eqi	a,0
+	jr	cont
+	jre	fin
+cont:	inr	c
+	jr	cmp
+fin:
+set ram:2000 0x53
+set ram:2001 0x6b
+set ram:2002 0xe3
+set ram:2003 0xbe
+set ram:2004 0xd9
+set ram:2005 0xdf
+set ram:2006 0x43
+set ram:2007 0x0
+set ram:2040 0x53
+set ram:2041 0x6b
+set ram:2042 0xdc
+set ram:2043 0xbe
+set ram:2044 0xd9
+set ram:2045 0xdf
+set ram:2046 0x43
+set ram:2047 0x0
+expect C 0x2
+end fin
+done
+case strcmp_49
+	lxi	h,2000h
+	lxi	d,2040h
+	mvi	c,0
+cmp:	ldax	h+
+	neax	d+
+	jr	same
+	jre	fin
+same:	eqi	a,0
+	jr	cont
+	jre	fin
+cont:	inr	c
+	jr	cmp
+fin:
+set ram:2000 0x6d
+set ram:2001 0xf2
+set ram:2002 0x9b
+set ram:2003 0x9
+set ram:2004 0x0
+set ram:2040 0x6d
+set ram:2041 0xf2
+set ram:2042 0xb2
+set ram:2043 0x9
+set ram:2044 0x0
+expect C 0x2
+end fin
+done
+case strcmp_50
+	lxi	h,2000h
+	lxi	d,2040h
+	mvi	c,0
+cmp:	ldax	h+
+	neax	d+
+	jr	same
+	jre	fin
+same:	eqi	a,0
+	jr	cont
+	jre	fin
+cont:	inr	c
+	jr	cmp
+fin:
+set ram:2000 0xab
+set ram:2001 0x93
+set ram:2002 0x53
+set ram:2003 0xfb
+set ram:2004 0x27
+set ram:2005 0xeb
+set ram:2006 0xf2
+set ram:2007 0xd5
+set ram:2008 0x52
+set ram:2009 0x9e
+set ram:200a 0x8a
+set ram:200b 0xca
+set ram:200c 0xa8
+set ram:200d 0x0
+set ram:2040 0xab
+set ram:2041 0x93
+set ram:2042 0x53
+set ram:2043 0xfb
+set ram:2044 0x27
+set ram:2045 0xeb
+set ram:2046 0xe5
+set ram:2047 0xd5
+set ram:2048 0x52
+set ram:2049 0x9e
+set ram:204a 0x8a
+set ram:204b 0xca
+set ram:204c 0xa8
+set ram:204d 0x0
+expect C 0x6
+end fin
+done
+case strcmp_51
+	lxi	h,2000h
+	lxi	d,2040h
+	mvi	c,0
+cmp:	ldax	h+
+	neax	d+
+	jr	same
+	jre	fin
+same:	eqi	a,0
+	jr	cont
+	jre	fin
+cont:	inr	c
+	jr	cmp
+fin:
+set ram:2000 0xdd
+set ram:2001 0x3d
+set ram:2002 0x95
+set ram:2003 0x10
+set ram:2004 0xd2
+set ram:2005 0x2e
+set ram:2006 0x23
+set ram:2007 0x6e
+set ram:2008 0x1d
+set ram:2009 0x5a
+set ram:200a 0x6d
+set ram:200b 0x86
+set ram:200c 0x0
+set ram:2040 0xdd
+set ram:2041 0x3d
+set ram:2042 0x95
+set ram:2043 0x10
+set ram:2044 0xd2
+set ram:2045 0x2e
+set ram:2046 0x23
+set ram:2047 0x6e
+set ram:2048 0x1d
+set ram:2049 0x5a
+set ram:204a 0x6d
+set ram:204b 0x46
+set ram:204c 0x0
+expect C 0xb
+end fin
+done
+case strcmp_52
+	lxi	h,2000h
+	lxi	d,2040h
+	mvi	c,0
+cmp:	ldax	h+
+	neax	d+
+	jr	same
+	jre	fin
+same:	eqi	a,0
+	jr	cont
+	jre	fin
+cont:	inr	c
+	jr	cmp
+fin:
+set ram:2000 0x83
+set ram:2001 0xfa
+set ram:2002 0x8c
+set ram:2003 0xea
+set ram:2004 0x24
+set ram:2005 0x33
+set ram:2006 0x2a
+set ram:2007 0x91
+set ram:2008 0xbc
+set ram:2009 0x88
+set ram:200a 0xf0
+set ram:200b 0xed
+set ram:200c 0xd6
+set ram:200d 0x87
+set ram:200e 0x0
+set ram:2040 0x83
+set ram:2041 0xfa
+set ram:2042 0x8c
+set ram:2043 0x3f
+set ram:2044 0x24
+set ram:2045 0x33
+set ram:2046 0x2a
+set ram:2047 0x91
+set ram:2048 0xbc
+set ram:2049 0x88
+set ram:204a 0xf0
+set ram:204b 0xed
+set ram:204c 0xd6
+set ram:204d 0x87
+set ram:204e 0x0
+expect C 0x3
+end fin
+done
+case crc8_53
+	lxi	h,2000h
+	mvi	d,0
+	mvi	b,15
+bytel:	ldax	h+
+	xra	a,d
+	mvi	c,7
+bitl:	sll	a
+	skn	cy
+	xri	a,7
+	dcr	c
+	jr	bitl
+	mov	d,a
+	dcr	b
+	jr	bytel
+	mov	2100h,d
+fin:
+set ram:2000 0x16
+set ram:2001 0x9f
+set ram:2002 0x8d
+set ram:2003 0xe9
+set ram:2004 0xde
+set ram:2005 0x5a
+set ram:2006 0x10
+set ram:2007 0x15
+set ram:2008 0xd8
+set ram:2009 0xc3
+set ram:200a 0x39
+set ram:200b 0x35
+set ram:200c 0x80
+set ram:200d 0xe1
+set ram:200e 0x78
+set ram:200f 0x95
+expect ram:2100 0x3e
+end fin
+done
+case crc8_54
+	lxi	h,2000h
+	mvi	d,0
+	mvi	b,15
+bytel:	ldax	h+
+	xra	a,d
+	mvi	c,7
+bitl:	sll	a
+	skn	cy
+	xri	a,7
+	dcr	c
+	jr	bitl
+	mov	d,a
+	dcr	b
+	jr	bytel
+	mov	2100h,d
+fin:
+set ram:2000 0x17
+set ram:2001 0xd5
+set ram:2002 0x4a
+set ram:2003 0x4b
+set ram:2004 0xe8
+set ram:2005 0x80
+set ram:2006 0x3
+set ram:2007 0x67
+set ram:2008 0xec
+set ram:2009 0x2d
+set ram:200a 0x9c
+set ram:200b 0x42
+set ram:200c 0x1b
+set ram:200d 0xbc
+set ram:200e 0x75
+set ram:200f 0x90
+expect ram:2100 0x79
+end fin
+done
+case crc8_55
+	lxi	h,2000h
+	mvi	d,0
+	mvi	b,15
+bytel:	ldax	h+
+	xra	a,d
+	mvi	c,7
+bitl:	sll	a
+	skn	cy
+	xri	a,7
+	dcr	c
+	jr	bitl
+	mov	d,a
+	dcr	b
+	jr	bytel
+	mov	2100h,d
+fin:
+set ram:2000 0xd2
+set ram:2001 0x60
+set ram:2002 0xd6
+set ram:2003 0x51
+set ram:2004 0xb8
+set ram:2005 0x53
+set ram:2006 0xdc
+set ram:2007 0x62
+set ram:2008 0x37
+set ram:2009 0xd3
+set ram:200a 0xe0
+set ram:200b 0x22
+set ram:200c 0x9e
+set ram:200d 0x10
+set ram:200e 0x19
+set ram:200f 0xec
+expect ram:2100 0x43
+end fin
+done
+case crc8_56
+	lxi	h,2000h
+	mvi	d,0
+	mvi	b,15
+bytel:	ldax	h+
+	xra	a,d
+	mvi	c,7
+bitl:	sll	a
+	skn	cy
+	xri	a,7
+	dcr	c
+	jr	bitl
+	mov	d,a
+	dcr	b
+	jr	bytel
+	mov	2100h,d
+fin:
+set ram:2000 0x9f
+set ram:2001 0x8e
+set ram:2002 0x8a
+set ram:2003 0x6c
+set ram:2004 0x3d
+set ram:2005 0x37
+set ram:2006 0x4e
+set ram:2007 0x69
+set ram:2008 0xa1
+set ram:2009 0xf7
+set ram:200a 0xd9
+set ram:200b 0xfe
+set ram:200c 0x75
+set ram:200d 0x4
+set ram:200e 0xfb
+set ram:200f 0x55
+expect ram:2100 0x59
+end fin
+done
+case crc8_57
+	lxi	h,2000h
+	mvi	d,0
+	mvi	b,15
+bytel:	ldax	h+
+	xra	a,d
+	mvi	c,7
+bitl:	sll	a
+	skn	cy
+	xri	a,7
+	dcr	c
+	jr	bitl
+	mov	d,a
+	dcr	b
+	jr	bytel
+	mov	2100h,d
+fin:
+set ram:2000 0x69
+set ram:2001 0xb4
+set ram:2002 0x63
+set ram:2003 0x6c
+set ram:2004 0xbf
+set ram:2005 0xd5
+set ram:2006 0xe3
+set ram:2007 0x36
+set ram:2008 0xfa
+set ram:2009 0x1b
+set ram:200a 0x31
+set ram:200b 0x46
+set ram:200c 0x10
+set ram:200d 0xbb
+set ram:200e 0xda
+set ram:200f 0xca
+expect ram:2100 0xcd
+end fin
+done
+case crc8_58
+	lxi	h,2000h
+	mvi	d,0
+	mvi	b,15
+bytel:	ldax	h+
+	xra	a,d
+	mvi	c,7
+bitl:	sll	a
+	skn	cy
+	xri	a,7
+	dcr	c
+	jr	bitl
+	mov	d,a
+	dcr	b
+	jr	bytel
+	mov	2100h,d
+fin:
+set ram:2000 0x35
+set ram:2001 0x2f
+set ram:2002 0x40
+set ram:2003 0xdc
+set ram:2004 0x5
+set ram:2005 0xf3
+set ram:2006 0xe8
+set ram:2007 0x70
+set ram:2008 0x8a
+set ram:2009 0xab
+set ram:200a 0xd5
+set ram:200b 0x91
+set ram:200c 0x97
+set ram:200d 0xfb
+set ram:200e 0x86
+set ram:200f 0x5a
+expect ram:2100 0x2f
+end fin
+done
+case crc8_59
+	lxi	h,2000h
+	mvi	d,0
+	mvi	b,15
+bytel:	ldax	h+
+	xra	a,d
+	mvi	c,7
+bitl:	sll	a
+	skn	cy
+	xri	a,7
+	dcr	c
+	jr	bitl
+	mov	d,a
+	dcr	b
+	jr	bytel
+	mov	2100h,d
+fin:
+set ram:2000 0xbe
+set ram:2001 0x7a
+set ram:2002 0x6e
+set ram:2003 0xcc
+set ram:2004 0xb8
+set ram:2005 0x29
+set ram:2006 0x1b
+set ram:2007 0x41
+set ram:2008 0xfa
+set ram:2009 0xf0
+set ram:200a 0xc1
+set ram:200b 0x11
+set ram:200c 0x3a
+set ram:200d 0x7d
+set ram:200e 0x5d
+set ram:200f 0xc3
+expect ram:2100 0x58
+end fin
+done
+case crc8_60
+	lxi	h,2000h
+	mvi	d,0
+	mvi	b,15
+bytel:	ldax	h+
+	xra	a,d
+	mvi	c,7
+bitl:	sll	a
+	skn	cy
+	xri	a,7
+	dcr	c
+	jr	bitl
+	mov	d,a
+	dcr	b
+	jr	bytel
+	mov	2100h,d
+fin:
+set ram:2000 0xbc
+set ram:2001 0x5a
+set ram:2002 0x36
+set ram:2003 0xc7
+set ram:2004 0xac
+set ram:2005 0x32
+set ram:2006 0xea
+set ram:2007 0x97
+set ram:2008 0xb3
+set ram:2009 0x42
+set ram:200a 0xe7
+set ram:200b 0x2b
+set ram:200c 0xf9
+set ram:200d 0x3f
+set ram:200e 0x88
+set ram:200f 0x7f
+expect ram:2100 0x58
+end fin
+done
+case crc8_61
+	lxi	h,2000h
+	mvi	d,0
+	mvi	b,15
+bytel:	ldax	h+
+	xra	a,d
+	mvi	c,7
+bitl:	sll	a
+	skn	cy
+	xri	a,7
+	dcr	c
+	jr	bitl
+	mov	d,a
+	dcr	b
+	jr	bytel
+	mov	2100h,d
+fin:
+set ram:2000 0xf3
+set ram:2001 0xa0
+set ram:2002 0xd1
+set ram:2003 0xd
+set ram:2004 0x5
+set ram:2005 0x23
+set ram:2006 0xd1
+set ram:2007 0xa7
+set ram:2008 0x4e
+set ram:2009 0x46
+set ram:200a 0xfb
+set ram:200b 0x33
+set ram:200c 0xa
+set ram:200d 0x86
+set ram:200e 0xc1
+set ram:200f 0x40
+expect ram:2100 0xf3
+end fin
+done
+case crc8_62
+	lxi	h,2000h
+	mvi	d,0
+	mvi	b,15
+bytel:	ldax	h+
+	xra	a,d
+	mvi	c,7
+bitl:	sll	a
+	skn	cy
+	xri	a,7
+	dcr	c
+	jr	bitl
+	mov	d,a
+	dcr	b
+	jr	bytel
+	mov	2100h,d
+fin:
+set ram:2000 0x12
+set ram:2001 0x14
+set ram:2002 0x43
+set ram:2003 0x5c
+set ram:2004 0xc5
+set ram:2005 0x98
+set ram:2006 0x73
+set ram:2007 0x7b
+set ram:2008 0xfb
+set ram:2009 0xe2
+set ram:200a 0x89
+set ram:200b 0x93
+set ram:200c 0x7b
+set ram:200d 0x13
+set ram:200e 0x24
+set ram:200f 0x51
+expect ram:2100 0x6e
+end fin
+done
+case popcount16_63
+	lded	2000h
+	dmov	ea,d
+	mvi	c,0
+	mvi	b,15
+loop:	dslr	ea
+	skn	cy
+	inr	c
+	dcr	b
+	jr	loop
+	mov	2100h,c
+fin:
+set ram:2000/2 0xffff
+expect ram:2100 0x10
+end fin
+done
+case popcount16_64
+	lded	2000h
+	dmov	ea,d
+	mvi	c,0
+	mvi	b,15
+loop:	dslr	ea
+	skn	cy
+	inr	c
+	dcr	b
+	jr	loop
+	mov	2100h,c
+fin:
+set ram:2000/2 0xffff
+expect ram:2100 0x10
+end fin
+done
+case popcount16_65
+	lded	2000h
+	dmov	ea,d
+	mvi	c,0
+	mvi	b,15
+loop:	dslr	ea
+	skn	cy
+	inr	c
+	dcr	b
+	jr	loop
+	mov	2100h,c
+fin:
+set ram:2000/2 0xa7e5
+expect ram:2100 0xa
+end fin
+done
+case popcount16_66
+	lded	2000h
+	dmov	ea,d
+	mvi	c,0
+	mvi	b,15
+loop:	dslr	ea
+	skn	cy
+	inr	c
+	dcr	b
+	jr	loop
+	mov	2100h,c
+fin:
+set ram:2000/2 0x337f
+expect ram:2100 0xb
+end fin
+done
+case popcount16_67
+	lded	2000h
+	dmov	ea,d
+	mvi	c,0
+	mvi	b,15
+loop:	dslr	ea
+	skn	cy
+	inr	c
+	dcr	b
+	jr	loop
+	mov	2100h,c
+fin:
+set ram:2000/2 0xffff
+expect ram:2100 0x10
+end fin
+done
+case popcount16_68
+	lded	2000h
+	dmov	ea,d
+	mvi	c,0
+	mvi	b,15
+loop:	dslr	ea
+	skn	cy
+	inr	c
+	dcr	b
+	jr	loop
+	mov	2100h,c
+fin:
+set ram:2000/2 0x1
+expect ram:2100 0x1
+end fin
+done
+case popcount16_69
+	lded	2000h
+	dmov	ea,d
+	mvi	c,0
+	mvi	b,15
+loop:	dslr	ea
+	skn	cy
+	inr	c
+	dcr	b
+	jr	loop
+	mov	2100h,c
+fin:
+set ram:2000/2 0xe657
+expect ram:2100 0xa
+end fin
+done
+case popcount16_70
+	lded	2000h
+	dmov	ea,d
+	mvi	c,0
+	mvi	b,15
+loop:	dslr	ea
+	skn	cy
+	inr	c
+	dcr	b
+	jr	loop
+	mov	2100h,c
+fin:
+set ram:2000/2 0xe595
+expect ram:2100 0x9
+end fin
+done
+case popcount16_71
+	lded	2000h
+	dmov	ea,d
+	mvi	c,0
+	mvi	b,15
+loop:	dslr	ea
+	skn	cy
+	inr	c
+	dcr	b
+	jr	loop
+	mov	2100h,c
+fin:
+set ram:2000/2 0xffff
+expect ram:2100 0x10
+end fin
+done
+case popcount16_72
+	lded	2000h
+	dmov	ea,d
+	mvi	c,0
+	mvi	b,15
+loop:	dslr	ea
+	skn	cy
+	inr	c
+	dcr	b
+	jr	loop
+	mov	2100h,c
+fin:
+set ram:2000/2 0x1
+expect ram:2100 0x1
+end fin
+done
+case table_block_73
+	lxi	h,2000h
+	mov	a,2100h
+	ldeax	h+a
+	lxi	h,2102h
+	steax	h
+	lxi	h,2000h
+	lxi	d,2200h
+	mvi	c,31
+	block
+fin:
+set ram:2000/2 0xe349
+set ram:2002/2 0x2354
+set ram:2004/2 0x7885
+set ram:2006/2 0xae0e
+set ram:2008/2 0x31e9
+set ram:200a/2 0x6005
+set ram:200c/2 0x5b36
+set ram:200e/2 0xc3bd
+set ram:2010/2 0xd205
+set ram:2012/2 0xc081
+set ram:2014/2 0xcc04
+set ram:2016/2 0xa70f
+set ram:2018/2 0x227c
+set ram:201a/2 0x36a9
+set ram:201c/2 0xce96
+set ram:201e/2 0xd84a
+set ram:2100 0x4
+expect ram:2102/2 0x7885
+expect ram:2200 0x49
+expect ram:2201 0xe3
+expect ram:2202 0x54
+expect ram:2203 0x23
+expect ram:2204 0x85
+expect ram:2205 0x78
+expect ram:2206 0xe
+expect ram:2207 0xae
+expect ram:2208 0xe9
+expect ram:2209 0x31
+expect ram:220a 0x5
+expect ram:220b 0x60
+expect ram:220c 0x36
+expect ram:220d 0x5b
+expect ram:220e 0xbd
+expect ram:220f 0xc3
+expect ram:2210 0x5
+expect ram:2211 0xd2
+expect ram:2212 0x81
+expect ram:2213 0xc0
+expect ram:2214 0x4
+expect ram:2215 0xcc
+expect ram:2216 0xf
+expect ram:2217 0xa7
+expect ram:2218 0x7c
+expect ram:2219 0x22
+expect ram:221a 0xa9
+expect ram:221b 0x36
+expect ram:221c 0x96
+expect ram:221d 0xce
+expect ram:221e 0x4a
+expect ram:221f 0xd8
+end fin
+done
+case table_block_74
+	lxi	h,2000h
+	mov	a,2100h
+	ldeax	h+a
+	lxi	h,2102h
+	steax	h
+	lxi	h,2000h
+	lxi	d,2200h
+	mvi	c,31
+	block
+fin:
+set ram:2000/2 0xc70a
+set ram:2002/2 0x780
+set ram:2004/2 0xa62b
+set ram:2006/2 0x2005
+set ram:2008/2 0x148d
+set ram:200a/2 0xbf72
+set ram:200c/2 0x5ad0
+set ram:200e/2 0x406b
+set ram:2010/2 0xdbac
+set ram:2012/2 0xc80
+set ram:2014/2 0xcbdb
+set ram:2016/2 0x7075
+set ram:2018/2 0x96a4
+set ram:201a/2 0x2fc0
+set ram:201c/2 0x36f7
+set ram:201e/2 0xe16d
+set ram:2100 0x4
+expect ram:2102/2 0xa62b
+expect ram:2200 0xa
+expect ram:2201 0xc7
+expect ram:2202 0x80
+expect ram:2203 0x7
+expect ram:2204 0x2b
+expect ram:2205 0xa6
+expect ram:2206 0x5
+expect ram:2207 0x20
+expect ram:2208 0x8d
+expect ram:2209 0x14
+expect ram:220a 0x72
+expect ram:220b 0xbf
+expect ram:220c 0xd0
+expect ram:220d 0x5a
+expect ram:220e 0x6b
+expect ram:220f 0x40
+expect ram:2210 0xac
+expect ram:2211 0xdb
+expect ram:2212 0x80
+expect ram:2213 0xc
+expect ram:2214 0xdb
+expect ram:2215 0xcb
+expect ram:2216 0x75
+expect ram:2217 0x70
+expect ram:2218 0xa4
+expect ram:2219 0x96
+expect ram:221a 0xc0
+expect ram:221b 0x2f
+expect ram:221c 0xf7
+expect ram:221d 0x36
+expect ram:221e 0x6d
+expect ram:221f 0xe1
+end fin
+done
+case table_block_75
+	lxi	h,2000h
+	mov	a,2100h
+	ldeax	h+a
+	lxi	h,2102h
+	steax	h
+	lxi	h,2000h
+	lxi	d,2200h
+	mvi	c,31
+	block
+fin:
+set ram:2000/2 0x1a38
+set ram:2002/2 0x9931
+set ram:2004/2 0xfc9e
+set ram:2006/2 0x70c6
+set ram:2008/2 0x5991
+set ram:200a/2 0x6c4e
+set ram:200c/2 0xad3e
+set ram:200e/2 0x517b
+set ram:2010/2 0xae63
+set ram:2012/2 0xf7db
+set ram:2014/2 0xad2c
+set ram:2016/2 0x8d1f
+set ram:2018/2 0x8a21
+set ram:201a/2 0x68df
+set ram:201c/2 0x8b29
+set ram:201e/2 0x4d36
+set ram:2100 0x2
+expect ram:2102/2 0x9931
+expect ram:2200 0x38
+expect ram:2201 0x1a
+expect ram:2202 0x31
+expect ram:2203 0x99
+expect ram:2204 0x9e
+expect ram:2205 0xfc
+expect ram:2206 0xc6
+expect ram:2207 0x70
+expect ram:2208 0x91
+expect ram:2209 0x59
+expect ram:220a 0x4e
+expect ram:220b 0x6c
+expect ram:220c 0x3e
+expect ram:220d 0xad
+expect ram:220e 0x7b
+expect ram:220f 0x51
+expect ram:2210 0x63
+expect ram:2211 0xae
+expect ram:2212 0xdb
+expect ram:2213 0xf7
+expect ram:2214 0x2c
+expect ram:2215 0xad
+expect ram:2216 0x1f
+expect ram:2217 0x8d
+expect ram:2218 0x21
+expect ram:2219 0x8a
+expect ram:221a 0xdf
+expect ram:221b 0x68
+expect ram:221c 0x29
+expect ram:221d 0x8b
+expect ram:221e 0x36
+expect ram:221f 0x4d
+end fin
+done
+case table_block_76
+	lxi	h,2000h
+	mov	a,2100h
+	ldeax	h+a
+	lxi	h,2102h
+	steax	h
+	lxi	h,2000h
+	lxi	d,2200h
+	mvi	c,31
+	block
+fin:
+set ram:2000/2 0xbfb7
+set ram:2002/2 0x431b
+set ram:2004/2 0x9b19
+set ram:2006/2 0x24c2
+set ram:2008/2 0x783
+set ram:200a/2 0x3e16
+set ram:200c/2 0x4bea
+set ram:200e/2 0xd780
+set ram:2010/2 0xd021
+set ram:2012/2 0xdfc6
+set ram:2014/2 0xf5c1
+set ram:2016/2 0xfec7
+set ram:2018/2 0x8f55
+set ram:201a/2 0xe1dc
+set ram:201c/2 0x129d
+set ram:201e/2 0xc59f
+set ram:2100 0x8
+expect ram:2102/2 0x783
+expect ram:2200 0xb7
+expect ram:2201 0xbf
+expect ram:2202 0x1b
+expect ram:2203 0x43
+expect ram:2204 0x19
+expect ram:2205 0x9b
+expect ram:2206 0xc2
+expect ram:2207 0x24
+expect ram:2208 0x83
+expect ram:2209 0x7
+expect ram:220a 0x16
+expect ram:220b 0x3e
+expect ram:220c 0xea
+expect ram:220d 0x4b
+expect ram:220e 0x80
+expect ram:220f 0xd7
+expect ram:2210 0x21
+expect ram:2211 0xd0
+expect ram:2212 0xc6
+expect ram:2213 0xdf
+expect ram:2214 0xc1
+expect ram:2215 0xf5
+expect ram:2216 0xc7
+expect ram:2217 0xfe
+expect ram:2218 0x55
+expect ram:2219 0x8f
+expect ram:221a 0xdc
+expect ram:221b 0xe1
+expect ram:221c 0x9d
+expect ram:221d 0x12
+expect ram:221e 0x9f
+expect ram:221f 0xc5
+end fin
+done
+case table_block_77
+	lxi	h,2000h
+	mov	a,2100h
+	ldeax	h+a
+	lxi	h,2102h
+	steax	h
+	lxi	h,2000h
+	lxi	d,2200h
+	mvi	c,31
+	block
+fin:
+set ram:2000/2 0x676c
+set ram:2002/2 0x7904
+set ram:2004/2 0xa22a
+set ram:2006/2 0xccaa
+set ram:2008/2 0x8f4e
+set ram:200a/2 0xb35b
+set ram:200c/2 0xea41
+set ram:200e/2 0xd067
+set ram:2010/2 0x9f70
+set ram:2012/2 0xb85f
+set ram:2014/2 0x3b9b
+set ram:2016/2 0x4c48
+set ram:2018/2 0xdb7d
+set ram:201a/2 0x592a
+set ram:201c/2 0x88bf
+set ram:201e/2 0x5347
+set ram:2100 0x12
+expect ram:2102/2 0xb85f
+expect ram:2200 0x6c
+expect ram:2201 0x67
+expect ram:2202 0x4
+expect ram:2203 0x79
+expect ram:2204 0x2a
+expect ram:2205 0xa2
+expect ram:2206 0xaa
+expect ram:2207 0xcc
+expect ram:2208 0x4e
+expect ram:2209 0x8f
+expect ram:220a 0x5b
+expect ram:220b 0xb3
+expect ram:220c 0x41
+expect ram:220d 0xea
+expect ram:220e 0x67
+expect ram:220f 0xd0
+expect ram:2210 0x70
+expect ram:2211 0x9f
+expect ram:2212 0x5f
+expect ram:2213 0xb8
+expect ram:2214 0x9b
+expect ram:2215 0x3b
+expect ram:2216 0x48
+expect ram:2217 0x4c
+expect ram:2218 0x7d
+expect ram:2219 0xdb
+expect ram:221a 0x2a
+expect ram:221b 0x59
+expect ram:221c 0xbf
+expect ram:221d 0x88
+expect ram:221e 0x47
+expect ram:221f 0x53
+end fin
+done
+case table_block_78
+	lxi	h,2000h
+	mov	a,2100h
+	ldeax	h+a
+	lxi	h,2102h
+	steax	h
+	lxi	h,2000h
+	lxi	d,2200h
+	mvi	c,31
+	block
+fin:
+set ram:2000/2 0xae2e
+set ram:2002/2 0x6d2f
+set ram:2004/2 0x4217
+set ram:2006/2 0x4686
+set ram:2008/2 0x978c
+set ram:200a/2 0xdbe9
+set ram:200c/2 0x5aa5
+set ram:200e/2 0x7e9f
+set ram:2010/2 0xa443
+set ram:2012/2 0xdddd
+set ram:2014/2 0x4b33
+set ram:2016/2 0x4f35
+set ram:2018/2 0x2a91
+set ram:201a/2 0xd19c
+set ram:201c/2 0x632c
+set ram:201e/2 0xcc46
+set ram:2100 0x14
+expect ram:2102/2 0x4b33
+expect ram:2200 0x2e
+expect ram:2201 0xae
+expect ram:2202 0x2f
+expect ram:2203 0x6d
+expect ram:2204 0x17
+expect ram:2205 0x42
+expect ram:2206 0x86
+expect ram:2207 0x46
+expect ram:2208 0x8c
+expect ram:2209 0x97
+expect ram:220a 0xe9
+expect ram:220b 0xdb
+expect ram:220c 0xa5
+expect ram:220d 0x5a
+expect ram:220e 0x9f
+expect ram:220f 0x7e
+expect ram:2210 0x43
+expect ram:2211 0xa4
+expect ram:2212 0xdd
+expect ram:2213 0xdd
+expect ram:2214 0x33
+expect ram:2215 0x4b
+expect ram:2216 0x35
+expect ram:2217 0x4f
+expect ram:2218 0x91
+expect ram:2219 0x2a
+expect ram:221a 0x9c
+expect ram:221b 0xd1
+expect ram:221c 0x2c
+expect ram:221d 0x63
+expect ram:221e 0x46
+expect ram:221f 0xcc
+end fin
+done
+case table_block_79
+	lxi	h,2000h
+	mov	a,2100h
+	ldeax	h+a
+	lxi	h,2102h
+	steax	h
+	lxi	h,2000h
+	lxi	d,2200h
+	mvi	c,31
+	block
+fin:
+set ram:2000/2 0x9b2
+set ram:2002/2 0xb197
+set ram:2004/2 0xe19c
+set ram:2006/2 0xc31a
+set ram:2008/2 0x8855
+set ram:200a/2 0xaddd
+set ram:200c/2 0xdd03
+set ram:200e/2 0xd562
+set ram:2010/2 0xb235
+set ram:2012/2 0x1d89
+set ram:2014/2 0xaadb
+set ram:2016/2 0xe188
+set ram:2018/2 0x5afb
+set ram:201a/2 0x7de0
+set ram:201c/2 0x7017
+set ram:201e/2 0x12e8
+set ram:2100 0x1c
+expect ram:2102/2 0x7017
+expect ram:2200 0xb2
+expect ram:2201 0x9
+expect ram:2202 0x97
+expect ram:2203 0xb1
+expect ram:2204 0x9c
+expect ram:2205 0xe1
+expect ram:2206 0x1a
+expect ram:2207 0xc3
+expect ram:2208 0x55
+expect ram:2209 0x88
+expect ram:220a 0xdd
+expect ram:220b 0xad
+expect ram:220c 0x3
+expect ram:220d 0xdd
+expect ram:220e 0x62
+expect ram:220f 0xd5
+expect ram:2210 0x35
+expect ram:2211 0xb2
+expect ram:2212 0x89
+expect ram:2213 0x1d
+expect ram:2214 0xdb
+expect ram:2215 0xaa
+expect ram:2216 0x88
+expect ram:2217 0xe1
+expect ram:2218 0xfb
+expect ram:2219 0x5a
+expect ram:221a 0xe0
+expect ram:221b 0x7d
+expect ram:221c 0x17
+expect ram:221d 0x70
+expect ram:221e 0xe8
+expect ram:221f 0x12
+end fin
+done
+case table_block_80
+	lxi	h,2000h
+	mov	a,2100h
+	ldeax	h+a
+	lxi	h,2102h
+	steax	h
+	lxi	h,2000h
+	lxi	d,2200h
+	mvi	c,31
+	block
+fin:
+set ram:2000/2 0x8ec7
+set ram:2002/2 0x2ff1
+set ram:2004/2 0x312b
+set ram:2006/2 0x65ae
+set ram:2008/2 0x6813
+set ram:200a/2 0x9612
+set ram:200c/2 0xa9af
+set ram:200e/2 0xbfce
+set ram:2010/2 0x290b
+set ram:2012/2 0x57be
+set ram:2014/2 0x7277
+set ram:2016/2 0x57b3
+set ram:2018/2 0x3795
+set ram:201a/2 0xbba
+set ram:201c/2 0xf69f
+set ram:201e/2 0x2b46
+set ram:2100 0x8
+expect ram:2102/2 0x6813
+expect ram:2200 0xc7
+expect ram:2201 0x8e
+expect ram:2202 0xf1
+expect ram:2203 0x2f
+expect ram:2204 0x2b
+expect ram:2205 0x31
+expect ram:2206 0xae
+expect ram:2207 0x65
+expect ram:2208 0x13
+expect ram:2209 0x68
+expect ram:220a 0x12
+expect ram:220b 0x96
+expect ram:220c 0xaf
+expect ram:220d 0xa9
+expect ram:220e 0xce
+expect ram:220f 0xbf
+expect ram:2210 0xb
+expect ram:2211 0x29
+expect ram:2212 0xbe
+expect ram:2213 0x57
+expect ram:2214 0x77
+expect ram:2215 0x72
+expect ram:2216 0xb3
+expect ram:2217 0x57
+expect ram:2218 0x95
+expect ram:2219 0x37
+expect ram:221a 0xba
+expect ram:221b 0xb
+expect ram:221c 0x9f
+expect ram:221d 0xf6
+expect ram:221e 0x46
+expect ram:221f 0x2b
+end fin
+done

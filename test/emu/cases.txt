@@ -1,0 +1,1210 @@
+case adi_plain
+code 1000 4605
+end 1002
+set A 0x10
+expect A 0x15
+expect PSW 0x00
+done
+
+case adi_carry
+code 1000 4620
+end 1002
+set A 0xf0
+expect A 0x10
+expect PSW 0x01
+done
+
+case adi_half_carry
+code 1000 4601
+end 1002
+set A 0x0f
+expect A 0x10
+expect PSW 0x10
+done
+
+case adi_zero
+code 1000 4601
+end 1002
+set A 0xff
+expect A 0x00
+expect PSW 0x51
+done
+
+case aci_carry_in
+code 1000 5600
+end 1002
+set A 0x7f
+set PSW 0x01
+expect A 0x80
+expect PSW 0x10
+done
+
+case aci_overflow
+code 1000 56ff
+end 1002
+set A 0xff
+set PSW 0x01
+expect A 0xff
+expect PSW 0x11
+done
+
+case sui_borrow
+code 1000 6620
+end 1002
+set A 0x10
+expect A 0xf0
+expect PSW 0x01
+done
+
+case sui_half_borrow
+code 1000 6601
+end 1002
+set A 0x10
+expect A 0x0f
+expect PSW 0x10
+done
+
+case sui_zero
+code 1000 6633
+end 1002
+set A 0x33
+expect A 0x00
+expect PSW 0x40
+done
+
+case sbi_borrow_in
+code 1000 7605
+end 1002
+set A 0x05
+set PSW 0x01
+expect A 0xff
+expect PSW 0x11
+done
+
+case sbb_reg_a
+code 1000 6072
+end 1002
+set B 0x10
+set A 0x01
+set PSW 0x01
+expect B 0x0e
+expect PSW 0x10
+done
+
+case add_a_reg_wrap
+code 1000 60c5
+end 1002
+set A 0x80
+set E 0x80
+expect A 0x00
+expect PSW 0x41
+done
+
+case add_adc_16bit
+code 1000 0d60470c6056
+end 1006
+set DE 0x0101
+set HL 0x12ff
+expect HL 0x1400
+expect PSW 0x00
+done
+
+case ana_keeps_cy_hc
+code 1000 608d
+end 1002
+set A 0xf0
+set E 0x3c
+set PSW 0x11
+expect A 0x30
+expect PSW 0x11
+done
+
+case ora_zero
+code 1000 609d
+end 1002
+set PSW 0x01
+expect A 0x00
+expect PSW 0x41
+done
+
+case xra_self
+code 1000 6091
+end 1002
+set A 0x5a
+set PSW 0x10
+expect A 0x00
+expect PSW 0x50
+done
+
+case ani_imm
+code 1000 070f
+end 1002
+set A 0xaa
+expect A 0x0a
+expect PSW 0x00
+done
+
+case ori_register
+code 1000 741bf0
+end 1003
+set C 0x0f
+set A 0x01
+expect C 0xff
+expect A 0x01
+done
+
+case xri_register
+code 1000 74140f
+end 1003
+set D 0xff
+expect D 0xf0
+done
+
+case sub_reg_a_borrow
+code 1000 6065
+end 1002
+set E 0x05
+set A 0x07
+expect E 0xfe
+expect PSW 0x11
+done
+
+case dadd_wrap
+code 1000 74c5
+end 1002
+set EA 0xffff
+set BC 0x0001
+expect EA 0x0000
+expect PSW 0x51
+done
+
+case dadc_carry_in
+code 1000 74d6
+end 1002
+set EA 0x00ff
+set DE 0x0100
+set PSW 0x01
+expect EA 0x0200
+expect PSW 0x10
+done
+
+case dsub_half_borrow
+code 1000 74e7
+end 1002
+set EA 0x0100
+set HL 0x0001
+expect EA 0x00ff
+expect PSW 0x10
+done
+
+case dsbb_borrow_in
+code 1000 74f5
+end 1002
+set EA 0x1000
+set BC 0x1000
+set PSW 0x01
+expect EA 0xffff
+expect PSW 0x11
+done
+
+case dan_dor_dxr
+code 1000 748d749e7497
+end 1006
+set EA 0xf0f0
+set BC 0x0ff0
+set DE 0x0f00
+set HL 0x00ff
+expect EA 0x0f0f
+done
+
+case eadd_esub
+code 1000 70417062
+end 1004
+set EA 0x00ff
+set A 0x01
+set B 0x01
+expect EA 0x00ff
+expect PSW 0x10
+done
+
+case mul_a_b
+code 1000 482e
+end 1002
+set A 0x12
+set B 0x10
+expect EA 0x0120
+expect PSW 0x00
+done
+
+case div_ea_c
+code 1000 483f
+end 1002
+set EA 0x0123
+set C 0x10
+expect EA 0x0012
+expect C 0x03
+done
+
+case inx_dcx_keep_flags
+code 1000 3203a8a912
+end 1005
+set HL 0xffff
+set EA 0x0000
+set BC 0x00ff
+set PSW 0x51
+expect HL 0x0000
+expect SP 0x7fff
+expect EA 0x0000
+expect BC 0x0100
+expect PSW 0x51
+done
+
+case nega_cases
+code 1000 483a
+end 1002
+set A 0x01
+expect A 0xff
+done
+
+case nega_80
+code 1000 483a
+end 1002
+set A 0x80
+expect A 0x80
+done
+
+case daa_manual_example
+code 1000 467961
+end 1003
+set A 0x88
+expect A 0x67
+expect PSW 0x01
+done
+
+case daa_low_digit
+code 1000 460861
+end 1003
+set A 0x09
+expect A 0x17
+expect PSW 0x00
+done
+
+case daa_wrap
+code 1000 460161
+end 1003
+set A 0x99
+expect A 0x00
+expect PSW 0x51
+done
+
+case stc_clc
+code 1000 482b00482a482b
+end 1007
+set PSW 0x50
+expect PSW 0x51
+done
+
+case rld_manual_example
+code 1000 4838
+end 1002
+set A 0x01
+set HL 0x2000
+set ram:2000 0x53
+expect A 0x05
+expect ram:2000 0x31
+done
+
+case rrd_manual_example
+code 1000 4839
+end 1002
+set A 0x01
+set HL 0x2000
+set ram:2000 0x53
+expect A 0x03
+expect ram:2000 0x15
+done
+
+case sll_keeps_z
+code 1000 4825
+end 1002
+set A 0x81
+set PSW 0x40
+expect A 0x02
+expect PSW 0x41
+done
+
+case slr_cy
+code 1000 4822
+end 1002
+set B 0x03
+expect B 0x01
+expect PSW 0x01
+done
+
+case rll_through_carry
+code 1000 4835
+end 1002
+set A 0x81
+set PSW 0x01
+expect A 0x03
+expect PSW 0x01
+done
+
+case rlr_through_carry
+code 1000 4833
+end 1002
+set C 0x02
+set PSW 0x01
+expect C 0x81
+expect PSW 0x00
+done
+
+case drll_drlr
+code 1000 48b448b048b0
+end 1006
+set EA 0x8001
+set PSW 0x00
+expect EA 0x4000
+expect PSW 0x01
+done
+
+case dsll_dslr
+code 1000 48a448a048a0
+end 1006
+set EA 0x8003
+expect EA 0x0001
+expect PSW 0x01
+done
+
+case addnc_skips
+code 1000 60a56a016b02
+end 1006
+set A 0x10
+set E 0x20
+expect A 0x30
+expect B 0x00
+expect C 0x02
+done
+
+case addnc_no_skip
+code 1000 60a56a016b02
+end 1006
+set A 0xf0
+set E 0x20
+expect A 0x10
+expect B 0x01
+expect C 0x02
+done
+
+case subnb_skips
+code 1000 60b56a016b02
+end 1006
+set A 0x05
+set E 0x03
+expect A 0x02
+expect B 0x00
+expect C 0x02
+done
+
+case subnb_no_skip
+code 1000 60b56a016b02
+end 1006
+set A 0x03
+set E 0x05
+expect A 0xfe
+expect B 0x01
+done
+
+case gta_skips
+code 1000 60ad6a016b02
+end 1006
+set A 0x05
+set E 0x04
+expect B 0x00
+expect C 0x02
+expect PSW 0x40
+done
+
+case gta_equal_no_skip
+code 1000 60ad6a016b02
+end 1006
+set A 0x05
+set E 0x05
+expect B 0x01
+expect PSW 0x11
+done
+
+case gta_zero_vs_ff
+code 1000 60ad6a01
+end 1004
+set A 0x00
+set E 0xff
+expect B 0x01
+expect PSW 0x51
+done
+
+case gta_sets_sk
+code 1000 60ad
+end 1002
+set A 0x05
+set E 0x04
+expect PSW 0x60
+done
+
+case lta_skips
+code 1000 60bd6a016b02
+end 1006
+set A 0x03
+set E 0x04
+expect B 0x00
+expect C 0x02
+expect PSW 0x11
+done
+
+case lta_equal_no_skip
+code 1000 60bd6a01
+end 1004
+set A 0x04
+set E 0x04
+expect B 0x01
+expect PSW 0x40
+done
+
+case nea_equal_no_skip
+code 1000 60ed6a01
+end 1004
+set A 0x07
+set E 0x07
+expect B 0x01
+expect PSW 0x40
+done
+
+case nea_differ_skips
+code 1000 60ed6a016b02
+end 1006
+set A 0x07
+set E 0x08
+expect B 0x00
+expect C 0x02
+expect PSW 0x11
+done
+
+case eqa_equal_skips
+code 1000 60fd6a016b02
+end 1006
+set A 0x07
+set E 0x07
+expect B 0x00
+expect C 0x02
+done
+
+case ona_skips
+code 1000 60cd6a016b02
+end 1006
+set A 0x18
+set E 0x08
+expect B 0x00
+expect C 0x02
+expect PSW 0x00
+done
+
+case ona_no_skip
+code 1000 60cd6a01
+end 1004
+set A 0x0f
+set E 0xf0
+expect B 0x01
+expect PSW 0x40
+done
+
+case offa_skips
+code 1000 60dd6a016b02
+end 1006
+set A 0x0f
+set E 0xf0
+set PSW 0x01
+expect B 0x00
+expect C 0x02
+expect PSW 0x41
+done
+
+case inr_carry_skips
+code 1000 426b016c02
+end 1005
+set B 0xff
+set PSW 0x01
+expect B 0x00
+expect C 0x00
+expect D 0x02
+expect PSW 0x51
+done
+
+case inr_no_skip
+code 1000 426b016c02
+end 1005
+set B 0x0f
+expect B 0x10
+expect C 0x01
+expect PSW 0x10
+done
+
+case dcr_borrow_skips
+code 1000 526b016c02
+end 1005
+set B 0x00
+expect B 0xff
+expect C 0x00
+expect D 0x02
+expect PSW 0x10
+done
+
+case dcr_no_skip
+code 1000 526b016c02
+end 1005
+set B 0x01
+expect B 0x00
+expect C 0x01
+expect PSW 0x40
+done
+
+case inrw_skips
+code 1000 20056b016c02
+end 1006
+set V 0x20
+set ram:2005 0xff
+expect ram:2005 0x00
+expect C 0x00
+expect D 0x02
+done
+
+case dcrw_skips
+code 1000 30056b016c02
+end 1006
+set V 0x20
+set ram:2005 0x00
+expect ram:2005 0xff
+expect C 0x00
+expect D 0x02
+done
+
+case sllc_skips
+code 1000 48056a016b02
+end 1006
+set A 0x81
+expect A 0x02
+expect B 0x00
+expect C 0x02
+expect PSW 0x01
+done
+
+case slrc_no_skip
+code 1000 48016a016b02
+end 1006
+set A 0x02
+expect A 0x01
+expect B 0x01
+expect PSW 0x00
+done
+
+case bit_set_skips
+code 1000 5b106a016b02
+end 1006
+set V 0x20
+set ram:2010 0x08
+expect B 0x00
+expect C 0x02
+done
+
+case bit_clear_no_skip
+code 1000 5b106a016b02
+end 1006
+set V 0x20
+set ram:2010 0xf7
+expect B 0x01
+done
+
+case sk_cy_skips
+code 1000 480a6a016b02
+end 1006
+set PSW 0x01
+expect B 0x00
+expect C 0x02
+done
+
+case skn_cy_skips
+code 1000 481a6a016b02
+end 1006
+set PSW 0x00
+expect B 0x00
+expect C 0x02
+done
+
+case sk_z_no_skip
+code 1000 480c6a01
+end 1004
+set PSW 0x00
+expect B 0x01
+done
+
+case skit_resets_flag
+code 1000 48416a016b02
+end 1006
+set FT0 1
+expect FT0 0
+expect B 0x00
+expect C 0x02
+done
+
+case sknit_flag_clear_skips
+code 1000 48636a016b02
+end 1006
+set F1 0
+expect B 0x00
+expect C 0x02
+done
+
+case sknit_flag_set_resets
+code 1000 48656a01
+end 1004
+set FE0 1
+expect FE0 0
+expect B 0x01
+done
+
+case skit_nmi_not_reset
+code 1000 48406a016b02
+end 1006
+set NMI 1
+expect NMI 1
+expect B 0x00
+done
+
+case skit_sb
+code 1000 48546a016b02
+end 1006
+set SB 1
+expect SB 0
+expect B 0x00
+done
+
+case gti_skips
+code 1000 27046a016b02
+end 1006
+set A 5
+expect B 0
+expect C 2
+done
+
+case lti_reg_skips
+code 1000 743d106a016b02
+end 1007
+set E 0x0f
+expect B 0
+expect C 2
+done
+
+case eqi_skips
+code 1000 77076a016b02
+end 1006
+set A 7
+expect B 0
+done
+
+case nei_no_skip
+code 1000 67076a01
+end 1004
+set A 7
+expect B 1
+done
+
+case oni_offi
+code 1000 47806a0157806b026c03
+end 100a
+set A 0x80
+expect B 0
+expect C 2
+expect D 3
+done
+
+case eqiw_gtiw
+code 1000 7504556a012504506b026c03
+end 100c
+set V 0x30
+set ram:3004 0x55
+expect B 0
+expect C 0
+expect D 3
+done
+
+case dgt_skips
+code 1000 74ae6a016b02
+end 1006
+set EA 0x0200
+set DE 0x01ff
+expect B 0
+expect C 2
+expect PSW 0x50
+done
+
+case dgt_sets_sk
+code 1000 74ae
+end 1002
+set EA 0x0200
+set DE 0x01ff
+expect PSW 0x70
+done
+
+case dlt_skips
+code 1000 74bd6a01
+end 1004
+set EA 0x0003
+set BC 0x0004
+expect PSW 0x11
+done
+
+case deq_skips
+code 1000 74ff
+end 1002
+set EA 0x1234
+set HL 0x1234
+expect PSW 0x60
+done
+
+case dne_no_skip
+code 1000 74ef6a01
+end 1004
+set EA 0x1234
+set HL 0x1234
+expect B 1
+expect PSW 0x40
+done
+
+case don_doff
+code 1000 74cd6c0174dd6d026e03
+end 100a
+set EA 0x1000
+set BC 0x0fff
+expect D 1
+expect E 0
+expect H 3
+done
+
+case daddnc_skips
+code 1000 74a56c016d02
+end 1006
+set EA 0x0001
+set BC 0x0001
+expect EA 0x0002
+expect D 0
+expect E 2
+done
+
+case dsubnb_skips
+code 1000 74b56c016d02
+end 1006
+set EA 0x0005
+set BC 0x0003
+expect EA 0x0002
+expect D 0
+expect E 2
+done
+
+case sk_chain_second_is_skipped
+code 1000 480a60ad6a016b02
+end 1008
+set PSW 0x01
+set A 5
+set E 4
+expect B 1
+expect C 2
+done
+
+case mvi_a_stacked
+code 1000 69016902
+end 1004
+expect A 1
+expect PSW 0x08
+done
+
+case mvi_a_after_other
+code 1000 69016a056902
+end 1006
+expect A 2
+expect B 5
+expect PSW 0x08
+done
+
+case mvi_l_stacked
+code 1000 6f106f20
+end 1004
+expect L 0x10
+expect PSW 0x04
+done
+
+case lxi_h_after_mvi_l
+code 1000 6f33344444
+end 1005
+expect HL 0x0033
+expect PSW 0x04
+done
+
+case lxi_h_twice
+code 1000 341111342222
+end 1006
+expect HL 0x1111
+done
+
+case mvi_a_then_l
+code 1000 69016f02
+end 1004
+expect A 1
+expect L 2
+expect PSW 0x04
+done
+
+case mvi_a_then_alu_clears
+code 1000 690146006903
+end 1006
+expect A 3
+done
+
+case stacked_entry_points
+code 1000 5408106f006f04b84003100f1d4005100f1c00
+end 1012
+set L 0xff
+set E 0x77
+set D 0x77
+expect E 0x00
+expect D 0x04
+done
+
+case mov_registers
+code 1000 1d0a1809
+end 1004
+set A 0x5a
+set B 0x11
+set EA 0x0034
+expect E 0x5a
+expect EAH 0x11
+expect A 0x34
+done
+
+case ldaw_staw
+code 1000 631060910110
+end 1006
+set V 0x30
+set A 0x42
+expect ram:3010 0x42
+expect A 0x42
+done
+
+case ldax_postinc
+code 1000 2d3e
+end 1002
+set HL 0x2000
+set DE 0x2100
+set ram:2000 0x11
+expect A 0x11
+expect HL 0x2001
+expect DE 0x20ff
+expect ram:2100 0x11
+done
+
+case ldax_indexed_b
+code 1000 ad
+end 1001
+set HL 0x2000
+set B 3
+set ram:2003 0x77
+expect A 0x77
+done
+
+case ldax_indexed_a
+code 1000 ac
+end 1001
+set HL 0x2000
+set A 2
+set ram:2002 0x66
+expect A 0x66
+done
+
+case ldax_indexed_ea
+code 1000 ae
+end 1001
+set HL 0x2000
+set EA 0x0104
+set ram:2104 0x55
+expect A 0x55
+done
+
+case ldax_disp_de
+code 1000 ab05
+end 1002
+set DE 0x2100
+set ram:2105 0x99
+expect A 0x99
+done
+
+case stax_disp_hl
+code 1000 bf05
+end 1002
+set HL 0x3000
+set A 0xaa
+expect ram:3005 0xaa
+done
+
+case stax_predec_hl
+code 1000 3f3f
+end 1002
+set HL 0x3001
+set A 0x12
+expect ram:3001 0x12
+expect ram:3000 0x12
+expect HL 0x2fff
+done
+
+case mov_absolute
+code 1000 706a0020707b0120
+end 1008
+set ram:2000 0x5c
+set C 0x6d
+expect B 0x5c
+expect ram:2001 0x6d
+done
+
+case mviw_mvix
+code 1000 7110554b66
+end 1005
+set V 0x20
+set HL 0x3000
+expect ram:2010 0x55
+expect ram:3000 0x66
+done
+
+case push_pop
+code 1000 040090143412b1a2
+end 1008
+expect DE 0x1234
+expect SP 0x9000
+expect ram:8fff 0x12
+expect ram:8ffe 0x34
+done
+
+case push_va_ea
+code 1000 b0b4a3
+end 1003
+set A 0x22
+set V 0x11
+set EA 0x3344
+expect ram:7ffe 0x22
+expect ram:7fff 0x11
+expect HL 0x3344
+expect SP 0x7ffe
+done
+
+case exx_exa_exh
+code 1000 111050
+end 1003
+set BC 0x1111
+set DE 0x2222
+set HL 0x3333
+set VA 0x4444
+set EA 0x5555
+set BC_ 0xaaaa
+set DE_ 0xbbbb
+set HL_ 0xcccc
+set VA_ 0xdddd
+set EA_ 0xeeee
+expect BC 0xaaaa
+expect DE 0xbbbb
+expect HL 0x3333
+expect HL_ 0xcccc
+expect BC_ 0x1111
+expect VA 0xdddd
+expect VA_ 0x4444
+expect EA 0xeeee
+expect EA_ 0x5555
+done
+
+case block_copy
+code 1000 31
+end 1001
+set C 2
+set HL 0x2000
+set DE 0x3000
+set ram:2000 0x11
+set ram:2001 0x22
+set ram:2002 0x33
+expect ram:3000 0x11
+expect ram:3001 0x22
+expect ram:3002 0x33
+expect C 0xff
+expect HL 0x2003
+expect DE 0x3003
+done
+
+case dmov_pairs
+code 1000 b5a7
+end 1002
+set EA 0xbeef
+set HL 0x1234
+expect BC 0xbeef
+expect EA 0x1234
+done
+
+case store_load_pairs
+code 1000 04bc9a700e0020703e1020701e2020702e3020702f1020701f3020703f0020700f1020
+end 1023
+set HL 0x1234
+set BC 0x5678
+set DE 0x9abc
+expect ram:2000 0xbc
+expect ram:2001 0x9a
+expect ram:2010 0x34
+expect ram:2011 0x12
+expect ram:2020 0x78
+expect ram:2021 0x56
+expect ram:2030 0xbc
+expect ram:2031 0x9a
+expect DE 0x1234
+expect BC 0x9abc
+expect HL 0x9abc
+expect SP 0x1234
+done
+
+case ldeax_steax
+code 1000 4895488b024892
+end 1007
+set EA 0xabcd
+set HL 0x2000
+set DE 0x2100
+set ram:2102 0x34
+set ram:2103 0x12
+expect ram:2000 0xcd
+expect ram:2001 0xab
+expect HL 0x2002
+expect EA 0x1234
+expect ram:2100 0x34
+expect ram:2101 0x12
+done
+
+case special_registers
+code 1000 4dc04cc16402056442034de84ce1
+end 100e
+set A 0x77
+set PORTB 0x12
+set CR1 0x9a
+expect PORTA 0x77
+expect PORTC 0x08
+expect ZCM 0x12
+expect A 0x9a
+done
+
+case timer_pairs
+code 1000 48d248c0
+end 1004
+set EA 0x1234
+set ECNT 0x5678
+expect ETM0 0x1234
+expect EA 0x5678
+done
+
+case table_lookup
+code 1000 48a82111223344
+end 1002
+set A 2
+expect C 0x33
+expect B 0x44
+done
+
+case jmp_jr_jre
+code 1000 5405106a01c26b014e026c016d09
+end 100e
+set E 0
+expect B 0
+expect C 0
+expect D 0
+expect E 9
+done
+
+case jre_backward
+code 1000 5408106e05540a104ff900
+end 100b
+expect H 5
+done
+
+case loop_dcr_jr
+code 1000 6a0053fe
+end 1004
+set C 2
+expect C 0xff
+done
+
+case call_ret
+code 1000 040090400b106c05540e106d07b800
+end 100f
+expect E 7
+expect D 5
+expect SP 0x9000
+done
+
+case rets_skips_after_call
+code 1000 040090400d106c056e095410106d07b900
+end 1011
+expect E 7
+expect D 0
+expect H 9
+done
+
+case call_stack_contents
+code 1000 040090400910540a100f00
+end 100a
+expect SP 0x8ffe
+expect ram:8ffe 0x06
+expect ram:8fff 0x10
+done
+
+case jb_jea_calb
+code 1000 040090140a10482948286c03141210216d0100
+end 1013
+expect D 3
+expect E 0
+done
+
+case calt_calf
+code 100 6c04b800
+code 900 6e06b8
+code 1000 040090817900540301
+end 104
+set ram:0082/2 0x0100
+expect D 4
+expect H 6
+done
+
+case softi_reti
+code 60 6a036200
+code 1000 040090726e07546300
+end 64
+set PSW 0x41
+expect B 3
+expect H 7
+expect SP 0x9000
+expect PSW 0x41
+expect ram:8fff 0x41
+done
+
+case skip_not_applied_to_softi
+code 60 6a036200
+code 1000 040090480a726e07546300
+end 64
+set PSW 0x01
+expect B 3
+done
+
+case jea_via_ea
+code 1000 48286a016b02
+end 1006
+set EA 4100
+expect B 0
+expect C 2
+done

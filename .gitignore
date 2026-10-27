@@ -1,0 +1,12 @@
+/build
+/dist
+*.sla
+*.lock
+.gradle
+.gradle-userhome/
+.ghidra-home/
+__pycache__/
+*.pyc
+lib/*.jar
+lib/*.jar.tmp
+test/asl/forms.asm

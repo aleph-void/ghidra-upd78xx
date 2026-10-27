@@ -1,0 +1,213 @@
+ACI A, byte
+ACI r, byte
+ACI sr2, byte
+ADC A, r
+ADC r, A
+ADCW wa
+ADCX rpa
+ADD A, r
+ADDNC A, r
+ADDNC r, A
+ADDNCW wa
+ADDNCX rpa
+ADD r, A
+ADDW wa
+ADDX rpa
+ADI A, byte
+ADINC A, byte
+ADINC r, byte
+ADINC sr2, byte
+ADI r, byte
+ADI sr2, byte
+ANA A, r
+ANA r, A
+ANAW wa
+ANAX rpa
+ANI A, byte
+ANI r, byte
+ANI sr2, byte
+ANIW wa, byte
+BIT bit, wa
+BLOCK
+CALB
+CALF word
+CALL word
+CALT word
+CLC
+DAA
+DADC EA, rp3
+DADD EA, rp3
+DADDNC EA, rp3
+DAN EA, rp3
+DCR r2
+DCRW wa
+DCX EA
+DCX rp
+DEQ EA, rp3
+DGT EA, rp3
+DI
+DIV r2
+DLT EA, rp3
+DMOV EA, rp3
+DMOV EA, sr4
+DMOV rp3, EA
+DMOV sr3, EA
+DNE EA, rp3
+DOFF EA, rp3
+DON EA, rp3
+DOR EA, rp3
+DRLL EA
+DRLR EA
+DSBB EA, rp3
+DSLL EA
+DSLR EA
+DSUB EA, rp3
+DSUBNB EA, rp3
+DXR EA, rp3
+EADD EA, r2
+EI
+EQA A, r
+EQA r, A
+EQAW wa
+EQAX rpa
+EQI A, byte
+EQI r, byte
+EQI sr2, byte
+EQIW wa, byte
+ESUB EA, r2
+EXA
+EXH
+EXX
+GTA A, r
+GTA r, A
+GTAW wa
+GTAX rpa
+GTI A, byte
+GTI r, byte
+GTI sr2, byte
+GTIW wa, byte
+INR r2
+INRW wa
+INX EA
+INX rp
+JB
+JEA
+JMP word
+JRE word
+JR word
+LBCD word
+LDAW wa
+LDAX rpa2
+LDEAX rpa3
+LDED word
+LHLD word
+LSPD word
+LTA A, r
+LTA r, A
+LTAW wa
+LTAX rpa
+LTI A, byte
+LTI r, byte
+LTI sr2, byte
+LTIW wa, byte
+LXI rp2, word
+MOV A, r1
+MOV A, sr1
+MOV r1, A
+MOV r, word
+MOV sr, A
+MOV word, r
+MUL r2
+MVI r, byte
+MVI sr2, byte
+MVIW wa, byte
+MVIX rpa1, byte
+NEA A, r
+NEA r, A
+NEAW wa
+NEAX rpa
+NEGA
+NEI A, byte
+NEI r, byte
+NEI sr2, byte
+NEIW wa, byte
+NOP
+OFFA A, r
+OFFAW wa
+OFFAX rpa
+OFFI A, byte
+OFFI r, byte
+OFFI sr2, byte
+OFFIW wa, byte
+ONA A, r
+ONAW wa
+ONAX rpa
+ONI A, byte
+ONI r, byte
+ONI sr2, byte
+ONIW wa, byte
+ORA A, r
+ORA r, A
+ORAW wa
+ORAX rpa
+ORI A, byte
+ORI r, byte
+ORI sr2, byte
+ORIW wa, byte
+POP rp1
+PUSH rp1
+RET
+RETI
+RETS
+RLD
+RLL r2
+RLR r2
+RRD
+SBB A, r
+SBB r, A
+SBBW wa
+SBBX rpa
+SBCD word
+SBI A, byte
+SBI r, byte
+SBI sr2, byte
+SDED word
+SHLD word
+SK f
+SKIT irf
+SKN f
+SKNIT irf
+SLLC r2
+SLL r2
+SLRC r2
+SLR r2
+SOFTI
+SSPD word
+STAW wa
+STAX rpa2
+STC
+STEAX rpa3
+SUB A, r
+SUBNB A, r
+SUBNB r, A
+SUBNBW wa
+SUBNBX rpa
+SUB r, A
+SUBW wa
+SUBX rpa
+SUI A, byte
+SUINB A, byte
+SUINB r, byte
+SUINB sr2, byte
+SUI r, byte
+SUI sr2, byte
+TABLE
+XRA A, r
+XRA r, A
+XRAW wa
+XRAX rpa
+XRI A, byte
+XRI r, byte
+XRI sr2, byte
+HLT
+STOP

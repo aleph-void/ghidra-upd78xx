@@ -23,13 +23,16 @@ define register offset=0x20 size=2 [ PC SP];
 
 # Flag bits
 
-define register offset=0x30 size=1 [ PSW ];
-@define CY_flag     "PSW[0,1]"  # C: Carry
-@define L0_flag     "PSW[2,1]"  #
-@define L1_flag     "PSW[3,1]"  #
-@define HC_flag     "PSW[4,1]"  # HC: Half carry
-@define SK_flag     "PSW[5,1]"  # SK: Skip flag, skips the next instruction
-@define Z_flag      "PSW[6,1]"  # Z: Zero
+# The program status word (bit 7 = 0, Z, SK, HC, L1, L0, bit 1 = 0, CY) is not a register:
+# each flag is a register of its own (0 or 1), which keeps the decompiler output readable. The
+# status byte exists only on the stack, where SOFTI and the interrupts push it and RETI pops it.
+define register offset=0x30 size=1 [ CY Z HC SK L0 L1 ];
+@define CY_flag     "CY"  # C: Carry
+@define L0_flag     "L0"  # stacked MVI L / LXI H (group B)
+@define L1_flag     "L1"  # stacked MVI A (group A)
+@define HC_flag     "HC"  # HC: Half carry
+@define SK_flag     "SK"  # SK: Skip flag, skips the next instruction
+@define Z_flag      "Z"   # Z: Zero
 
 # Control registers
 define register offset=0x40 size=1 [PORTA PORTB PORTC PORTD PORTF MA MB MC MCC MF MM TM0 TM1 TMM ETMM EOM ANM CR0 CR1 CR2 CR3 TXB RXB SMH SML MKH MKL ZCM]; # Mode control registers
@@ -339,6 +342,20 @@ macro pop16(ret16) {
     SP = SP + 2;
 }
 
+# PSW as it appears on the stack: 0 Z SK HC L1 L0 0 CY
+macro psw_byte(val8) {
+    val8 = (Z << 6) | (SK << 5) | (HC << 4) | (L1 << 3) | (L0 << 2) | CY;
+}
+
+macro psw_restore(val8) {
+    CY = val8 & 1;
+    L0 = (val8 >> 2) & 1;
+    L1 = (val8 >> 3) & 1;
+    HC = (val8 >> 4) & 1;
+    SK = (val8 >> 5) & 1;
+    Z = (val8 >> 6) & 1;
+}
+
 macro push8(val8) {
     SP = SP - 1;
     *:1 SP = val8;
@@ -477,7 +494,7 @@ rp1: EA is rp1_0_2 = 0x4 & EA { export EA; }
 rp2: SP is rp2_4_6 = 0x0 & SP { export SP; }
 rp2: BC is rp2_4_6 = 0x1 & BC { export BC; }
 rp2: DE is rp2_4_6 = 0x2 & DE { export DE; }
-rp2: HL is rp2_4_6 = 0x3 & HL { export HL; }
+# HL (3) is the LXI H instruction below, which carries the stacking flag
 rp2: EA is rp2_4_6 = 0x4 & EA { export EA; }
 
 rp3: BC is rp3_0_1 = 0x1 & BC { export BC; }
@@ -770,7 +787,7 @@ ins: "POP" rp1 is op3_7 = 0x14 & rp1 & rp1_0_2 < 0x5 {
     pop16(rp1);
 }
 
-ins: "LXI" rp2, imm16 is op0_3 = 0x4 & bit_7 = 0 & rp2 & rp2_4_6 < 0x5 & rp2_4_6 != 3; imm16 {
+ins: "LXI" rp2, imm16 is op0_3 = 0x4 & bit_7 = 0 & rp2 & rp2_4_6 < 0x5; imm16 {
     rp2 = imm16;
 }
 
@@ -1587,7 +1604,9 @@ ins: "CALT" loc is op5_7 = 0x4 & ta_0_4 [ loc = 0x0080 + (ta_0_4 << 1); possible
 # The 87AD series pushes the address of the next instruction (the uCOM-87 pushed its own address).
 :SOFTI is op0_7 = 0x72 [ possibleSkip = 1; globalset(inst_next,possibleSkip); ] {
     local tmp:2 = inst_next;
-    push8(PSW);
+    local psw:1 = 0;
+    psw_byte(psw);
+    push8(psw);
     push16(tmp);
     $(SK_flag) = 0;
     $(L1_flag) = 0;
@@ -1615,7 +1634,9 @@ ins: "RETS" is op0_7 = 0xb9 {
 ins: "RETI" is op0_7 = 0x62 {
     local tmp:2 = 0;
     pop16(tmp);
-    pop8(PSW);
+    local psw:1 = 0;
+    pop8(psw);
+    psw_restore(psw);
     return [tmp];
 }
 
